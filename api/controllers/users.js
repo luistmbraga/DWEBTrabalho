@@ -14,7 +14,6 @@ module.exports.gruposUserId = id => {
 }
 
 module.exports.inserirUser = dados => {
-   
     var user = new User(dados);
     console.log(user);
 

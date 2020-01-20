@@ -1,0 +1,29 @@
+extends layout
+block content
+  .w3-container
+        .w3-card-4
+            header.w3-container(style="background-color: #990000; ")
+                center
+                  h1
+                    font(color="white") UMBook
+                  img(src='https://www.uminho.pt/_layouts/15/UMinho.PortalUM.UI/images/portal-logo.png' style='width:200px; height:120px;') 
+        .w3-card-4.modal(id='display')
+        p
+        center
+          .w3-container(style="width: 40%;")
+            form(action='/login' method ='POST')
+              input.w3-input.w3-border(type='text' name='email' placeholder='Email' required)
+              input.w3-input.w3-border(type='password' name='password' placeholder='Password' required)
+              center
+                a(onclick="showRegisto()") Ainda não possuí conta?
+              button(type="submit" style="background-color: #e6e6e6; color: #990000; width:100%; padding:12px; font-size:16px; border-radius: 12px;").w3-hover-green Login
+          
+          .w3-container(style= "width: 40%;")
+            hr(style="border-color: black;")
+            text Esta aplicação web é destinada para estudantes da Universidade do Minho, 
+            text com o intuito de facilitar a inserção de documentos relativos às várias cadeiras lecionadas ao longo dos anos dos vários cursos,
+            text bem como a procura e obtenção desses mesmos documentos. Além disso, os utilizadores têm direito a um chat, de
+            text  maneira a viabilizar a comunicação entre os estudantes.
+  footer.w3-container(style="background-color: #990000;")
+    address 
+      font(color="white") Gerado por DWEB_TP App

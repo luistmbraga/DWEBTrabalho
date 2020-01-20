@@ -1,0 +1,19 @@
+extends layout
+block content
+  .w3-container
+        .w3-card-4
+            header.w3-container.w3-amber
+                h1.w3-center InformaticBook
+                center
+                    img(src='https://cdn.pixabay.com/photo/2013/07/13/11/36/documents-158461__340.png' style='width:120px; height:120px;') 
+        .w3-card-4
+          .w3-container
+            h3.w3-gray.w3-center Registo
+            input.w3-input.w3-border(type='text' name='email' placeholder='Email' required)
+            input.w3-input.w3-border(type='text' name='idEstudante' placeholder='Identificador de Estudante' required)
+            input.w3-input.w3-border(type='date' name='dataNascimento' placeholder='Data de Nascimento' required)
+            input.w3-input.w3-border(type='text' name='github' placeholder='GitHub')
+            input.w3-input.w3-border(type='password' name='password' placeholder='Password' required)
+            button(type="submit" style="background-color: DodgerBlue; color: white; width:100%; padding:15px; font-size:20px; border-radius: 12px;").w3-hover-green Registar
+  footer.w3-container.w3-amber
+    address Gerado por DWEB_TP App

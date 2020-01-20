@@ -1,0 +1,33 @@
+extends layout
+block content
+    .w3-container
+        .w3-card-4
+            header.w3-container(style="background-color: #990000; ")
+                center
+                    h1
+                        font(color="white") UMBook
+                    img(src='https://www.uminho.pt/_layouts/15/UMinho.PortalUM.UI/images/portal-logo.png' style='width:200px; height:120px;') 
+            
+            button(type='button' onclick="logout()" style="background-color: #e6e6e6; color: #990000; padding:10px; font-size:13px; border-radius: 12px;  position:absolute; transition: .5s ease; top: 0%; left: 92.2%;").w3-hover-red Terminar Sessão
+            .topnav
+                a.active(href='#feed') Feed
+                a(href='#perfil') Meu Perfil
+                a(href='#grupos') Meus Grupos
+            center
+                .w3-container(style = 'width:64.5%;' )
+                    form(method='POST' action='/publicacao/principal')
+                        textarea(id = "publicacao" placeholder= "Escreva o que lhe vai na alma..." rows='5', cols='130')
+                        input.w3-input.w3-border.w3-light-grey(type='file' name='ficheiro' multiple)
+                        button(type="submit" style="background-color: DodgerBlue; color: white; width:100%; padding:12px; font-size:16px; border-radius: 12px;").w3-hover-green Publicar
+            if(lista.length > 0)
+                hr
+            each pub in lista
+                center
+                    .w3-container(style = 'width:64.5%; border-width:2px; border-style:solid; border-color:blue;')
+                        b= pub.utilizador
+                        p
+                        text= pub.texto
+                    hr
+    footer.w3-container(style="background-color: #990000;")
+        address 
+            font(color="white") Gerado por DWEB_TP App
