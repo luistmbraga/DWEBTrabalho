@@ -67,6 +67,14 @@ router.post('/utilizador', function(req, res, next){
        .catch(erro => res.status(500).render('erro', {error : erro}) )
 })
 
+router.post('/teste', function(req, res, next){
+  console.log(res)
+  axios.post('http://localhost:5019/download/Postman.exe',JSON.stringify(res))
+       .then( () => res.redirect('/') )
+       .catch(erro => res.status(500).render('erro', {error : erro}) )
+})
+
+
 
 
 module.exports = router;

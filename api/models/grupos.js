@@ -20,11 +20,9 @@ var PublicacaoSchema = new Schema({
 
 var GrupoSchema = new Schema({
     _id: {type: String, required: true},
-    email: [{type: String, required: true}],
     curso: {type: String, required: true},
-    publicacoes: [PublicacaoSchema],
-    ficheiros: [FicheiroSchema],
-    gruposFilhos: [this]
+    gruposFilhos: [String],
+    desc_dependencia: Boolean 
   });
 
 module.exports = mongoose.model('grupos',GrupoSchema)
