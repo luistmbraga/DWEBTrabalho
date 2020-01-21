@@ -5,7 +5,9 @@ var Schema = mongoose.Schema
 var FicheiroSchema = new Schema({
     size: {type: String, required: true},
     type: String,
-    name: {type: String, required: true}
+    name: {type: String, required: true},
+    id_container: String,
+    emailUser: String
 })
 
 
@@ -14,7 +16,7 @@ var PublicacaoSchema = new Schema({
   conteudo: String,
   emailUser: String,
   nomeUser: String,
-  ficheiros: [FicheiroSchema],
+  grupo: String,
   tags: [String]
 })
 

@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-
 // Página inicial após autenticação
 router.get('/inicial', function(req, res, next) {
   res.render('index');
