@@ -1,4 +1,4 @@
-var axios = require('axios')
+
 var host = 'http://localhost:1234/'
 
 function showRegisto(){
