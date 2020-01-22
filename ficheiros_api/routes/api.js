@@ -7,12 +7,21 @@ var upload = multer({dest: 'uploads/'})
 var mkdirp = require('mkdirp');
 var md5 = require('md5');
 
+
+router.get('/ficheiros/:idFicheiro', function(req, res) {
+  Ficheiros.getDados(req.params.idFicheiro)
+    .then(dados => res.jsonp(dados))
+    .catch(erro => res.status(500).jsonp(erro))
+});
+
 /* GET users listing. */
 router.get('/ficheiros', function(req, res) {
   Ficheiros.listar()
     .then(dados => res.jsonp(dados))
     .catch(erro => res.status(500).jsonp(erro))
 });
+
+
 
 router.get('/download/:idFicheiro', function(req, res){
 
@@ -71,7 +80,7 @@ router.post('/ficheiros', upload.array('ficheiro'), function(req, res){
 
 
 
-router.delete('/ficheirosGrupos/:idFicheiro', function(req, res){
+router.delete('/ficheiros/:idFicheiro', function(req, res){
 
   Ficheiros.getPath(req.params.idFicheiro)
     .then(dados => {

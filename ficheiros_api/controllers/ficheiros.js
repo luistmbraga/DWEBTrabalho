@@ -8,6 +8,10 @@ module.exports.listar = () => {
         .exec()
 }
 
+module.exports.getDados = id => {
+    return Ficheiro.find(ObjectId(id)).exec()
+}
+
 module.exports.inserirFicheiro = (size, mimetype, originalname, newPath, idContainer, emailUser) => {
     let ficheiro = new Ficheiro({
         size: size,
