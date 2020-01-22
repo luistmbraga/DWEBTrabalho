@@ -5,6 +5,7 @@ const fs = require('fs')
 var multer = require('multer')
 var upload = multer({dest: 'uploads/'})
 var mkdirp = require('mkdirp');
+var md5 = require('md5');
 
 /* GET users listing. */
 router.get('/ficheiros', function(req, res) {
@@ -13,84 +14,83 @@ router.get('/ficheiros', function(req, res) {
     .catch(erro => res.status(500).jsonp(erro))
 });
 
-router.get('/download/:fnome', function(req, res){
-  res.download(__dirname + '/../public/ficheiros/'+req.params.fnome)
+router.get('/download/:idFicheiro', function(req, res){
+
+  Ficheiros.getPath(req.params.idFicheiro)
+    .then(dados => {
+      
+
+      res.download(dados[0].path)
+
+
+    })
+    .catch(erro => res.status(500).jsonp(erro))
+
+  
 })
 
 // Inserir um ficheiro na pasta de grupos
-router.post('/ficheirosGrupos', upload.array('ficheiro'), function(req, res){
+router.post('/ficheiros', upload.array('ficheiro'), function(req, res){
 
   var length = req.files.length;
   
   for(var i = 0; i < length; i++){
 
     let oldPath = __dirname + '/../'+req.files[i].path
-    let newPath = __dirname + '/../public/ficheiros/Grupos/'+ req.body.idContainer 
+    let newPath = __dirname + '/../public/ficheiros/'
+    let name = req.files[i].originalname
+    let size = req.files[i].size
+    let type = req.files[i].mimetype
 
-    
-    mkdirp(newPath)
+  
 
-    newPath = newPath + req.files[i].originalname;
+    fs.readFile(oldPath, function(err, buf) {
+      var string = md5(buf);
+      var string1 = string.substring(0, 8);
+      var string2 = string.substring(8, 16);
+      var string3 = string.substring(16, 24);
+      var string4 = string.substring(24, 32);
+      
+      newPath = newPath + string1 + '/' + string2 + '/' + string3 + '/' + string4 + '/';
+      mkdirp(newPath);
 
-    
-    fs.rename(oldPath, newPath, function(err){
-      if(err) throw err
-    })
+      newPath = newPath + name;
 
+      fs.rename(oldPath, newPath, function(err){
+        if(err) throw err
+      })
 
-    Ficheiros.inserirFicheiro(req.files[i], newPath, req.body.idContainer, req.body.emailUser)
+      Ficheiros.inserirFicheiro(size, type, name, newPath, req.body.idContainer, req.body.emailUser)
+    });
+  
     
   }
 
   res.end('0');
 })
 
-// Inserir um ficheiro na pasta de conversas
-router.post('/ficheirosConversas', upload.array('ficheiro'), function(req, res){
 
-  var length = req.files.length;
-  
-  for(var i = 0; i < length; i++){
 
-    let oldPath = __dirname + '/../'+req.files[i].path
-    let newPath = __dirname + '/../public/ficheiros/Conversas/'+ req.body.idContainer 
+router.delete('/ficheirosGrupos/:idFicheiro', function(req, res){
 
-    // fazer pedido ao grupos
-    
-    mkdirp(newPath)
+  Ficheiros.getPath(req.params.idFicheiro)
+    .then(dados => {
+      
 
-    newPath = newPath + req.files[i].originalname;
+      Ficheiros.apagar(req.params.idFicheiro);
 
-    
-    fs.rename(oldPath, newPath, function(err){
-      if(err) throw err
+      fs.unlinkSync(dados[0].path , (err) => {
+        if (err) {
+          console.error(err)
+        }
+      
+        //file removed
+      })
+
+      res.end('0');
     })
-
-
-    Ficheiros.inserirFicheiro(req.files[i], newPath, req.body.idContainer, req.body.emailUser)
-    
-  }
-
-  res.end('0');
-})
-
-router.delete('/ficheirosGrupos/:idFicheiro/:idContainer', function(req, res){
-
-  // apaga na base de dados
-  Ficheiros.apagar(req.params.idFicheiro);
-
-  // fazer request ao grupos
-
-  console.log(req.body)
-  // apaga o ficheiro
-  fs.unlinkSync(__dirname + '/../public/ficheiros/Grupos/' , (err) => {
-    if (err) {
-      console.error(err)
-    }
+    .catch(erro => res.status(500).jsonp(erro))
   
-    //file removed
-  })
-  res.end('0');
 })
 
 module.exports = router;

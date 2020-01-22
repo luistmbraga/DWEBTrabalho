@@ -8,12 +8,12 @@ module.exports.listar = () => {
         .exec()
 }
 
-module.exports.inserirFicheiro = (file, newPath, idContainer, emailUser) => {
+module.exports.inserirFicheiro = (size, mimetype, originalname, newPath, idContainer, emailUser) => {
     let ficheiro = new Ficheiro({
-        size: file.size,
-        type: file.mimetype,
+        size: size,
+        type: mimetype,
         path: newPath,
-        name: file.originalname,
+        name: originalname,
         id_container: idContainer,
         emailUser: emailUser
     });
@@ -36,3 +36,6 @@ module.exports.apagar = id => {
     })
 }
 
+module.exports.getPath = id => {
+    return Ficheiro.find({_id: ObjectId(id)},{_id: false, path: true}).exec()
+}
