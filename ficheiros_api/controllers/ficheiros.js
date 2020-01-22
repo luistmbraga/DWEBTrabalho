@@ -13,24 +13,29 @@ module.exports.getDados = id => {
 }
 
 module.exports.inserirFicheiro = (size, mimetype, originalname, newPath, idContainer, emailUser) => {
-    let ficheiro = new Ficheiro({
-        size: size,
-        type: mimetype,
-        path: newPath,
-        name: originalname,
-        id_container: idContainer,
-        emailUser: emailUser
-    });
+    return new Promise((resolve, reject) => {
+        
+        let ficheiro = new Ficheiro({
+            size: size,
+            type: mimetype,
+            path: newPath,
+            name: originalname,
+            id_container: idContainer,
+            emailUser: emailUser
+        });
 
-    ficheiro.save(function(err, ficheiro){
-        if(!err) console.log('Ficheiro guardado com sucesso!')
-        else console.log('ERRO:'+err)
-
-      })
-
-
+        ficheiro.save(function(err, ficheiro){
+            if(!err) {console.log('Ficheiro guardado com sucesso!'); resolve(0);}
+            else console.log('ERRO:'+err)
+        })
+    })
+    
 }
 
+module.exports.getId = path => {
+    console.log(path)
+    return Ficheiro.find({path: path},{_id:true}).exec()
+}
 
 module.exports.apagar = id => {
     Ficheiro.deleteOne({_id:ObjectId(id)},(err, fi) => {
