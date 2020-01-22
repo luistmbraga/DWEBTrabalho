@@ -33,7 +33,6 @@ module.exports.inserirFicheiro = (size, mimetype, originalname, newPath, idConta
 }
 
 module.exports.getId = path => {
-    console.log(path)
     return Ficheiro.find({path: path},{_id:true}).exec()
 }
 
