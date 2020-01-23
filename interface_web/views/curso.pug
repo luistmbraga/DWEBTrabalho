@@ -1,0 +1,13 @@
+extends layoutAutenticado
+block content
+    h3= 'Curso ' + curso
+    if(grupos.length > 0)
+        .w3-container
+            each index, grupo in grupos
+            center
+                .w3-container(style='width:40%;')
+                    b= d.index
+                    hr
+                    b Lista de Cadeiras lecionadas
+                    
+        

@@ -9,11 +9,14 @@ block content
         .w3-card-4
           .w3-container
             h3.w3-gray.w3-center Registo
-            input.w3-input.w3-border(type='text' name='email' placeholder='Email' required)
-            input.w3-input.w3-border(type='text' name='idEstudante' placeholder='Identificador de Estudante' required)
-            input.w3-input.w3-border(type='date' name='dataNascimento' placeholder='Data de Nascimento' required)
-            input.w3-input.w3-border(type='text' name='github' placeholder='GitHub')
+            input.w3-input.w3-border(type='text' name='_id' placeholder='Email' required)
             input.w3-input.w3-border(type='password' name='password' placeholder='Password' required)
+            input.w3-input.w3-border(type='date' name='dataNasc' placeholder='Data de Nascimento' required)
+            input.w3-input.w3-border(type='text' name='numAluno' placeholder='Identificador (Número) de Estudante' required)
+            input.w3-input.w3-border(type='text' name='nome' placeholder='Nome' required)
+            input.w3-input.w3-border(type='text' name='sexo' placeholder='Sexo')
+            input.w3-input.w3-border(type='number' name='numTelemovel' placeholder='Número de telemóvel')
+            input.w3-input.w3-border(type='text' name='curso' placeholder='Curso')
             button(type="submit" style="background-color: DodgerBlue; color: white; width:100%; padding:15px; font-size:20px; border-radius: 12px;").w3-hover-green Registar
   footer.w3-container.w3-amber
     address Gerado por DWEB_TP App
