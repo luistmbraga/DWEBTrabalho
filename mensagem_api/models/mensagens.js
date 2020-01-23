@@ -3,10 +3,10 @@ var Schema = mongoose.Schema
 
 
 var msgSchema = new Schema({
-    texto: String,
-    dataEnvio : Date,
-    from: String,
-    idConversa: String
+    texto: {type: String, required:true},
+    dataEnvio : {type: Date, required:true},
+    from: {type: String, required:true},
+    idConversa: {type: String, required:true}
   });
 
 

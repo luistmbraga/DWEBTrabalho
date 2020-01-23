@@ -2,7 +2,7 @@ var User = require('../models/users')
 
 
 module.exports.listarTodosUsers = () => {
-    return User.find().exec()
+    return User.find({},{pass:false}).exec()
 }
 
 module.exports.consultarUserId = id => {

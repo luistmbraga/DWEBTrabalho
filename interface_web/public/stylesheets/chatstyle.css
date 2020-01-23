@@ -13,7 +13,7 @@ body{
 }
 
 .msg_head{	
-	background:black;
+	background:#990000;
 	color:white;
 	padding:8px;
 	font-weight:bold;
@@ -74,7 +74,7 @@ body{
 /**** Slider Layout Popup *********/
 
  #chat-sidebar {
-     width: 200%;
+     width: 200px;
      height: 100%;
 	 float: right;
      padding-top: 10px;

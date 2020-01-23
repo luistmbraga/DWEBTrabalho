@@ -14,6 +14,27 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+
+router.get('/mensagens/:id',function(req, res, next) {
+  axios.get('http://localhost:3051/api/mensagens/'+req.params.id)
+  .then( (dados) => {res.jsonp(dados.data)})
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+router.get('/conversas',function(req, res, next) {
+var id = "a1@alunos.uminho.pt";
+axios.get('http://localhost:3050/api/conversas/participante/'+id+'/simples')
+  .then(dados => res.jsonp(dados.data))
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+router.post('/conversas',function(req, res, next) {
+  axios.post('http://localhost:3050/api/conversas',req.body)
+  .then( (dados) => {res.jsonp(dados.data)})
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+
 // Página inicial após autenticação
 router.get('/inicial', function(req, res, next) {
   res.render('index');
@@ -36,9 +57,11 @@ router.get('/feedNoticias', function(req, res, next){
               dataFormatada = new Date(element.data)
               element.data = dataFormatada.toDateString()
             });
-              
-            res.render('feed', {lista : dados.data}) 
-          })
+            axios.get('http://localhost:3054/api/users')
+              .then( (users) => {res.render('feed', {lista : dados.data, users:users.data}) 
+              })
+              .catch(erro => res.status(500).render('error', {error : erro}) )
+        })
         .catch(erro => res.status(500).render('error', {error : erro}) )
   
 })
@@ -76,7 +99,10 @@ router.get('/grupos', function(req, res, next){
          
          subgrupos(dados.data[0].gruposFilhos).then(grupos =>{
             console.log(grupos)
-            res.render('curso', {curso: curso, dados : grupos})
+
+            axios.get('http://localhost:3054/api/users')
+            .then( (users) => {res.render('curso', {curso: curso, dados : grupos,users:users.data})})
+            .catch(erro => res.status(500).render('error', {error : erro}) ) 
          }) 
 
         })

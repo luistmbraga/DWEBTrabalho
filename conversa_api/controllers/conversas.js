@@ -3,10 +3,22 @@ var Conversa = require('../models/conversas')
 const Conversas = module.exports
 
 var ObjectId = require('mongodb').ObjectID
+
+Conversas.listar = () => {
+    return Conversa
+            .find()
+            .exec()
+}
     
 Conversas.findByParticipante = (participante) => {
     return Conversa
             .find({ "participantes": { $in: [ participante ] } })
+            .exec()
+}
+
+Conversas.findByParticipanteSimple = (participante) => {
+    return Conversa
+            .find({ $and:[{participantes:{ $size: 2 }},{"participantes": { $in: [ participante ] }}] })
             .exec()
 }
 

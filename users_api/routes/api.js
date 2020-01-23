@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
       .catch(erro => res.status(500).jsonp(erro))
   });
   
+
   router.get('/:id/grupos', function(req, res) {
     Users.gruposUserId(req.params.id)
       .then(dados => res.jsonp(dados))

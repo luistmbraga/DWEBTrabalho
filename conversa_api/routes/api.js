@@ -1,13 +1,25 @@
 var express = require('express');
+
 var router = express.Router();
 
 var Conversas = require('../controllers/conversas')
 
+//GET
 
-//                                                GET
+router.get('/', function(req,res){
+  Conversas.listar()
+          .then(dados => res.jsonp(dados))
+          .catch(erro => res.status(500).jsonp(erro))
+})
 
 router.get('/participante/:id', function(req, res){
   Conversas.findByParticipante(req.params.id)
+          .then(dados => res.jsonp(dados))
+          .catch(erro => res.status(500).jsonp(erro))
+})
+
+router.get('/participante/:id/simples', function(req, res){
+  Conversas.findByParticipanteSimple(req.params.id)
           .then(dados => res.jsonp(dados))
           .catch(erro => res.status(500).jsonp(erro))
 })

@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('interface-web:server');
 var http = require('http');
+var axios = require('axios')
+
 
 /**
  * Get port from environment and store in Express.
@@ -24,8 +26,35 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+var connectedSockets = {}
 server.listen(port);
+
+var io = require('socket.io').listen(server);
+
+//var io = req.app.get('socketio');
+  io.on('connection', function(socket){
+    var username = socket.handshake.query['username'];
+
+    connectedSockets[username]=socket;
+    console.log('User'+username+' a user connected');
+
+
+    socket.on('private', function(data){
+      console.log('message: ' + JSON.stringify(data));
+      axios.post('http://localhost:3051/api/mensagens',data)
+        .then( () => connectedSockets[data.to].emit("private", data))
+        .catch(erro =>{ console.log("ERRO: "+erro);data.erro ="Mensagem Não enviada, tente novamente mais tarde"; connectedSockets[data.from].emit("erro",data )})
+    
+      
+    });
+    
+    socket.on('disconnect', function(){
+      console.log('user disconnected');
+    });
+  });
+
+//app.set('socketio', io);
+
 server.on('error', onError);
 server.on('listening', onListening);
 
