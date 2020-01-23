@@ -95,7 +95,8 @@ function addFiles(files, body) {
 
 // Inserir um ficheiro na pasta de grupos
 router.post('/ficheiros', upload.array('ficheiro'), function(req, res){
-
+  console.log(req.files)
+  console.log(req.body.idContainer)
   addFiles(req.files, req.body)
     .then(dados => res.jsonp(dados))
     .catch(erro => res.status(500).jsonp(erro))

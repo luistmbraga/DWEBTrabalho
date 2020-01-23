@@ -8,6 +8,10 @@ var apiMensagens = 'http://localhost:3051/api/mensagens/'
 var apiGrupos = 'http://localhost:3052/api/grupos/' 
 var apiPublicacoes = 'http://localhost:3053/api/publicacoes/' 
 var apiUsers = 'http://localhost:3054/api/users/'
+var apiFicheiros = 'http://localhost:3055/api/ficheiros/'
+
+var multer = require('multer')
+var upload = multer({dest:'uploads/'})
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -63,6 +67,23 @@ router.get('/feedNoticias', function(req, res, next){
               .catch(erro => res.status(500).render('error', {error : erro}) )
         })
         .catch(erro => res.status(500).render('error', {error : erro}) )
+  
+})
+
+router.post('/ficheiros/:idContainer', function(req, res, next){
+
+  var ficheiros = {}
+
+  // verificar na auttenticação
+  ficheiros.emailUser = 'lguilhermem@hotmail.com'
+
+  ficheiros.idContainer = req.params.idContainer
+  ficheiros.ficheiro = req.ficheiros
+
+
+  axios.post(apiFicheiros, ficheiros)
+        .then(dados => res.jsonp(dados))
+        .error(erro => res.status(500).render('error', ))
   
 })
 
@@ -126,10 +147,12 @@ router.post('/utilizador', function(req, res, next){
        .catch(erro => res.status(500).render('error', {error : erro}) )
 })
 
-router.post('/publicacao/:grupo', function(req, res, next){
+router.post('/publicacao/:grupo', upload.array('ficheiros'), function(req, res, next){
+
 
   var newPublicacao = req.body
   
+  let files = req.files;
   // ir buscar o nome do User e seu email ao token
   newPublicacao.emailUser = "lguilhermem@hotmail.com"
   newPublicacao.nomeUser = "Luís Martins"
@@ -137,7 +160,27 @@ router.post('/publicacao/:grupo', function(req, res, next){
   newPublicacao.grupo = req.params.grupo
 
   axios.post(apiPublicacoes, newPublicacao)
-       .then( () => res.redirect('/feedNoticias') )
+       .then( publicacao => {
+
+        if(files.length > 0){
+          
+          idPublicacao = publicacao.data._id
+          var ficheiros = {}
+          
+          // verificar na auttenticação
+          ficheiros.emailUser = 'lguilhermem@hotmail.com'
+        
+          ficheiros.idContainer = idPublicacao
+          ficheiros.ficheiro = files
+        
+          console.log(ficheiros)
+
+          axios.post(apiFicheiros, ficheiros, {headers: {enctype:'multipart/form-data'}})
+                .then(dados => res.redirect('/feedNoticias') )
+                .error(erro => res.status(500).render('error', ))
+         }
+         else res.redirect('/feedNoticias') 
+       })
        .catch(erro => res.status(500).render('error', {error : erro}) )
 
 })

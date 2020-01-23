@@ -5,7 +5,7 @@ block content
             p
             center
                 .w3-container(style = 'width:40%;' )
-                    form(method='POST' action='/publicacao/principal')
+                    form(method='POST' action='/publicacao/principal' enctype='multipart/form-data')
                         textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5', cols='76')
                         input.w3-input.w3-border.w3-light-grey(type='file' name='ficheiros' multiple)
                         button.button01(type="submit") Publicar

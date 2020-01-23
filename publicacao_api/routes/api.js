@@ -35,7 +35,7 @@ router.post('/', function(req, res, next) {
   var newPublicacao = req.body
   newPublicacao.data = new Date() 
   Publicacoes.insert(req.body)
-  .then(dados => res.jsonp({result:"Publicacao Inserida com Sucesso"}))
+  .then(dados => res.jsonp(dados))
   .catch(erro => res.status(500).jsonp(erro))
 });
 
