@@ -11,7 +11,7 @@ var app = express();
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/UminhoISN', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://127.0.0.1:27017/UMbook', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(()=> console.log('Mongo ready: ' + mongoose.connection.readyState))
   .catch(()=> console.log('Mongo: erro na conexão.'))
 
