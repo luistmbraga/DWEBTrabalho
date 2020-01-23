@@ -73,16 +73,12 @@ function addFiles(files, body) {
       
             
             Ficheiros.inserirFicheiro(size, type, name, newPath, body.idContainer, body.emailUser)
-              .then(dados => {
-                
-                Ficheiros.getId(newPath)
-                  .then(id => {
+              .then(id => {
                    
-                    ids.push(id[0]._id); 
-                    
-                    if(j++ == length) resolve(ids);
-                  })
-                  .catch(erro => res.status(500).jsonp(erro))
+                ids.push(id); 
+                
+                if(j++ == length) resolve(ids);
+                  
               })
               .catch(erro => res.status(500).jsonp(erro))
           })

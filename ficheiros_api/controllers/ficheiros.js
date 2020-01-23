@@ -25,7 +25,7 @@ module.exports.inserirFicheiro = (size, mimetype, originalname, newPath, idConta
         });
 
         ficheiro.save(function(err, ficheiro){
-            if(!err) {console.log('Ficheiro guardado com sucesso!'); resolve(0);}
+            if(!err) {console.log('Ficheiro guardado com sucesso!');  resolve(ficheiro._id);}
             else console.log('ERRO:'+err)
         })
     })
