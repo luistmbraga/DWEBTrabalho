@@ -22,6 +22,12 @@ router.get('/ficheiros', function(req, res) {
 });
 
 
+router.get('/ficheiros/publicacao/:idContainer', function(req, res){
+  Ficheiros.getInfoPublicacoes(req.params.idContainer)
+  .then(dados => res.jsonp(dados))
+  .catch(erro => res.status(500).jsonp(erro))
+})
+
 
 router.get('/download/:idFicheiro', function(req, res){
 
@@ -95,8 +101,8 @@ function addFiles(files, body) {
 
 // Inserir um ficheiro na pasta de grupos
 router.post('/ficheiros', upload.array('ficheiro'), function(req, res){
-  console.log(req.files)
-  console.log(req.body.idContainer)
+  //console.log(req.files)
+  console.log(req.body)
   addFiles(req.files, req.body)
     .then(dados => res.jsonp(dados))
     .catch(erro => res.status(500).jsonp(erro))

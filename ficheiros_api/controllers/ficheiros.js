@@ -47,3 +47,8 @@ module.exports.apagar = id => {
 module.exports.getPath = id => {
     return Ficheiro.find({_id: ObjectId(id)},{_id: false, path: true}).exec()
 }
+module.exports.getInfoPublicacoes = idContainer => {
+    return Ficheiro
+            .find({id_container: idContainer},{_id:true, name:true})
+            .exec()
+}

@@ -46,6 +46,7 @@ Grupos.removeSubGrupo = (id,gId) =>{
 Grupos.getGruposFilhos = (id) =>{
     return Grupo
         .find({_id:id},{"gruposFilhos":true,"_id":false})
+        .sort({ano : -1})
         .exec()
 }
 

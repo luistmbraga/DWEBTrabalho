@@ -21,6 +21,30 @@ function showRegisto(){
     $('#display').modal()
 }
 
+function Filevalidation(){ 
+    const fi = document.getElementById('ficheiros'); 
+    // Check if any file is selected. 
+    if (fi.files.length > 0) { 
+        if(fi.files.length > 10) alert('Apenas são permitidos 10 ficheiros')
+        
+        for (const i = 0; i <= fi.files.length - 1; i++) { 
+
+            const fsize = fi.files.item(i).size; 
+            const file = Math.round((fsize / 1024 )); 
+            // The size of the file. 
+            if (file > 1024*5) {
+                fi.value = [] 
+                alert( "File too Big, please select a file less than 5mb"); 
+            } 
+        } 
+    } 
+} 
+
+function getGrupo(idGrupo){
+    axios.get('http://localhost:1234/grupos/' + idGrupo)
+         .catch(error => console.log(error))
+}
+
 function logout(){
     axios.get('http://localhost:1234/logout')
          .catch(error => console.log(error))

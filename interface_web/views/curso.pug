@@ -1,13 +1,28 @@
 extends layoutAutenticado
 block content
-    h3= 'Curso ' + curso
-    if(grupos.length > 0)
-        .w3-container
-            each index, grupo in grupos
+    .w3-container(style="display: flex;")
+        .w3-container(style="width: 150%;")
             center
-                .w3-container(style='width:40%;')
-                    b= d.index
-                    hr
-                    b Lista de Cadeiras lecionadas
-                    
-        
+                h2
+                    font(size= '40')= 'Curso ' + curso
+                hr(style="border-color: #990000;")
+                .w3-container
+                    each grupo in grupos
+                        .w3-container(style='width:40%; border-width:2px; background-color:white; border-style:double; border-color:#990000;')
+                            b
+                                font(style='color:#990000')= grupo.name 
+                            p
+                            button.button01(type= 'button' style='width:40%;' onclick="getGrupo('"+ grupo.name +"')'" ) Ver Grupo
+                            hr(style="border-color: #990000;")
+                            if grupo.ucs.length > 0
+                                b Lista de Cadeiras lecionadas:
+                                p
+                                each uc in grupo.ucs
+                                    .w3-container(style='border-width:2px; background-color:white; border-style:double; border-color:#990000;')
+                                        b= uc
+                                    p
+                        p
+        .w3-container(style="flex-grow: 1;")    
+            include chat
+                            
+                
