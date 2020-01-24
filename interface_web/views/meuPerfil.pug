@@ -1,0 +1,94 @@
+extends layoutAutenticado
+block content
+    .w3-container(style="display: flex;")
+        .w3-container(style="width: 150%;")
+            .w3-container(align="left" style='background: url(/images/escolaEngenhariaLogo.png); background-color: #d9d9d9; background-repeat: no-repeat;background-position: right; background-size: 18% 100%; border-bottom: 5px solid #990000')
+                table
+                    tr
+                        td
+                            .w3-container
+                                img(src='/images/prometeu.jpg' style='width:250px; height:350px; border: 10px solid transparent; border-color: #990000;')
+                        td 
+                            .w3-container(style="padding-bottom:10em;")
+                                table.w3-table
+                                    tr
+                                        td  
+                                            font(size="6.5") 
+                                                b Prometeu Carvalho 
+                                    tr
+                                        td 
+                                            font(size="3") 
+                                                b Mestrado Integrado em Engenharia Informática
+
+            .w3-container(style="display: flex;")
+                .w3-container(style="width: 150%;")
+                    p
+                    center
+                        .w3-container(style = 'width:40%;' )
+                            form(method='POST' action='/publicacao/principal')
+                                textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5', cols='76')
+                                input.w3-input.w3-border.w3-light-grey(type='file' name='ficheiros' multiple)
+                                button.button01(type="submit") Publicar
+                    if(lista.length > 0)
+                        hr
+                    each pub in lista
+                        center
+                            .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                                .w3-container(style = 'float: left;')
+                                    b= pub.nomeUser
+                                .w3-container(style = 'float: right;')
+                                    b= pub.data
+                                hr(style="border-color: #990000;")
+                                center
+                                    text= pub.conteudo
+                            p
+                            p
+    
+        .w3-container(style="flex-grow: 1;")    
+            include chat
+    style.
+            .dropdown {
+                float: left;
+                overflow: hidden;
+            }
+            
+            .dropdown .dropbtn {
+                font-size: 16px;  
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+            
+            .navbar a:hover, .dropdown:hover .dropbtn {
+                background-color: red;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+            
+            .dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }

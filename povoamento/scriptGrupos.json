@@ -1,0 +1,53 @@
+[
+    {
+    "gruposFilhos": [
+                "MIEI-Primeiro Ano",
+                "MIEI-Segundo Ano",
+                "MIEI-Terceiro Ano",
+                "MIEI-Quarto Ano | MEI-Primeiro Ano",
+                "MIEI-Quinto Ano | MEI-Segundo Ano"
+            ],
+    "_id": "MIEI",
+    "curso": "MIEI",
+    "desc_dependencia": false
+    }
+    ,
+    {
+        "_id": "MIEI-Primeiro Ano",
+        "curso": "MIEI",
+        "gruposFilhos": ["Algebra Linear", "Cálculo", "TMD", "PF", "EES", "LI1", "SC", "Análise", "TFM", "Lógica", "PI", "LI2"],
+        "ano" : 1,
+        "desc_dependencia": false
+    }
+    ,
+    {
+        "_id": "MIEI-Segundo Ano",
+        "curso": "MIEI",
+        "gruposFilhos": ["ISD", "EA", "EE", "AC", "CD", "Algoritmos e Complexidade", "SO", "POO", "Eletromagnetismo", "LI3", "CP"],
+        "ano" : 2,
+        "desc_dependencia": false
+    }
+    ,
+    {
+        "_id": "MIEI-Terceiro Ano",
+        "curso": "MIEI",
+        "gruposFilhos": ["BD", "DSS", "MDIO", "RC", "SD", "MNOL", "LI4", "SRC", "MEIO", "CG", "CC", "PL"],
+        "ano" : 3,
+        "desc_dependencia": false
+    }
+    ,
+    {
+        "_id": "MIEI-Quarto Ano | MEI-Primeiro Ano",
+        "curso": "MIEI",
+        "gruposFilhos": [],
+        "ano": 4,
+        "desc_dependencia": false
+    }
+    ,
+    {
+        "_id": "MIEI-Quinto Ano | MEI-Segundo Ano",
+        "curso": "MIEI",
+        "gruposFilhos": [],
+        "desc_dependencia": false
+    }
+]

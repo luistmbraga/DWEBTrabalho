@@ -1,0 +1,57 @@
+[
+    {
+        "_id": "a3333@alunos.uminho.pt",
+        "pass": "luz",
+        "numAluno": "a3333",
+        "nome": "Prometeu Carvalho",
+        "dataNasc": "16/01/2020",
+        "sexo": "Masculino",
+        "numTelemovel": 955555555,
+        "curso": "Mestrado Integrado em Engenharia Informática",
+        "grupos": [
+            "MIEI"
+        ]
+    }
+    ,
+    {
+        "_id": "a82298@alunos.uminho.pt",
+        "pass": "benfica123",
+        "numAluno": "a82298",
+        "nome": "Luís Martins",
+        "dataNasc": "15/10/1998",
+        "sexo": "Masculino",
+        "numTelemovel": 911111111,
+        "curso": "Mestrado Integrado em Engenharia Informática",
+        "grupos": [
+            "MIEI"
+        ]
+    }
+    ,
+    {
+        "_id": "a83099@alunos.uminho.pt",
+        "pass": "frangoAssado",
+        "numAluno": "a83099",
+        "nome": "Luís Filipe",
+        "dataNasc": "06/02/1998",
+        "sexo": "Masculino",
+        "numTelemovel": 933333333,
+        "curso": "Mestrado Integrado em Engenharia Informática",
+        "grupos": [
+            "MIEI"
+        ]
+    }
+    ,
+    {
+        "_id": "a82088@alunos.uminho.pt",
+        "pass": "123456",
+        "numAluno": "a3333",
+        "nome": "Luís Braga",
+        "dataNasc": "14/02/1998",
+        "sexo": "Masculino",
+        "numTelemovel": 944444444,
+        "curso": "Mestrado Integrado em Engenharia Informática",
+        "grupos": [
+            "MIEI"
+        ]
+    }
+]
