@@ -85,20 +85,21 @@ router.get('/logout', function(req, res){
 
 function getFicheiros(publicacoes){
   return new Promise( (resolve, reject) => {
-    let result = publicacoes
-    var length = publicacoes.length -1
-    var i = 0;
-    publicacoes.forEach(element => {
-      axios.get(apiFicheiros + 'publicacao/' + element._id)
-              .then(dados  =>{
-                  result[i].files = dados.data
-                  result[i].dataFormatada = new Date(element.data).toDateString()
-                  if(i++ == length) resolve(result)
-              })
-              .catch(error => reject(error))
-    })
-  
-    
+    if(publicacoes.length > 0){
+      let result = publicacoes
+      var length = publicacoes.length -1
+      var i = 0;
+      publicacoes.forEach(element => {
+        axios.get(apiFicheiros + 'publicacao/' + element._id)
+                .then(dados  =>{
+                    result[i].files = dados.data
+                    result[i].dataFormatada = new Date(element.data).toDateString()
+                    if(i++ == length) resolve(result)
+                })
+                .catch(error => reject(error))
+        })
+    }
+    else resolve([])
   })
 }
 
@@ -198,7 +199,6 @@ router.get('/feedNoticias', function(req, res, next){
               .then( (users) => {
                 getFicheiros(dados.data)
                 .then(dados =>{
-                  //console.log(dados)
                   res.render('feed', {lista : dados, users:users.data})
                 } )
                 .catch(erro => console.log(erro))
@@ -209,6 +209,58 @@ router.get('/feedNoticias', function(req, res, next){
         .catch(erro => res.status(500).render('error', {error : erro}) )
   
 })
+
+router.get('/meuPerfil/:idUser', function(req, res, next){
+  var userid = 'a3333@alunos.uminho.pt'
+
+  axios.get(apiPublicacoes + "users/" + userid)
+    .then(dados => {
+      axios.get(apiUsers)
+        .then( (users) => {
+          getFicheiros(dados.data)
+          .then(dados =>{
+            //res.render('feed', {lista : dados, users:users.data})
+            res.render('meuPerfil', {lista: dados, users: users.data})
+          } )
+          .catch(erro => console.log(erro))
+            
+        })
+        .catch(erro => res.status(500).render('error', {error : erro}) )
+    })
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+  
+})
+
+router.get('/user/:idUser', function(req, res, nex){
+  var userid = req.params.idUser
+
+  axios.get(apiUsers + userid)
+    .then(dados => {
+      user = {
+        email: userid,
+        dataNasc: dados.data.dataNasc,
+        identificador: dados.data.numAluno,
+        nome: dados.data.nome,
+        sexo: dados.data.sexo,
+        numTelemovel: dados.data.numTelemovel,
+        curso: dados.data.curso
+      }
+      res.jsonp(user)
+    })
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+router.post('/atualizaUtilizador', function(req, res, next){
+  
+  var iduser = req.body._id
+
+  axios.put(apiUsers + iduser, req.body)
+    .then(dados => {
+      res.redirect('/meuPerfil/' + iduser)
+    })
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
 
 router.get('/grupos/:idGrupo', function(req, res, next){
   var idGrupo = req.params.idGrupo

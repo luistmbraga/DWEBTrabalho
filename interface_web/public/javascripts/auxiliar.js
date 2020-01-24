@@ -21,6 +21,33 @@ function showRegisto(){
     $('#display').modal()
 }
 
+function updateUser(idUser){
+    axios.get('http://localhost:1234/user/' + idUser)
+        .then(dados => {
+            console.log(dados)
+            var registo = 
+            '<div class="w3-container">' +
+                '<form method="POST" action="http://localhost:1234/atualizaUtilizador/">' +
+                    '<input class="w3-input w3-border" type="text" name="_id" value="'+ dados.data.email +'" required="required"/>' +
+                    '<input class="w3-input w3-border" type="text" name="dataNasc" value="'+dados.data.dataNasc+'" onfocus="(this.type=`date`)" />' +
+                    '<input class="w3-input w3-border" type="text" name="numAluno" value="'+dados.data.identificador+'" />' +
+                    '<input class="w3-input w3-border" type="text" name="nome" value="'+dados.data.nome+'"  />' +
+                    '<input class="w3-input w3-border" type="text" name="sexo" value="'+dados.data.sexo+'" /> ' + 
+                    '<input class="w3-input w3-border" type="number" name="numTelemovel" value="'+dados.data.numTelemovel+'" />' +
+                    '<input class="w3-input w3-border" type="text" name="curso" value="'+dados.data.curso+'" /> ' + 
+                        '<button class="w3-hover-dark-grey" type="submit" style="background-color: #990000; color: white; width:100%; padding:15px; ' + 
+                        'font-size:20px; border-radius: 12px;">' +
+                            'Atualizar' +
+                        '</button>' +
+                '</form>' +
+             '</div>'
+
+            $('#display').empty()
+            $('#display').append(registo)
+            $('#display').modal()
+        })
+}
+
 function Filevalidation(){ 
     const fi = document.getElementById('ficheiros'); 
     // Check if any file is selected. 

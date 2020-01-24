@@ -1,48 +1,56 @@
 extends layoutAutenticado
 block content
+    .w3-card-4.modal(id='display')
     .w3-container(style="display: flex;")
         .w3-container(style="width: 150%;")
-            .w3-container(align="left" style='background: url(/images/escolaEngenhariaLogo.png); background-color: #d9d9d9; background-repeat: no-repeat;background-position: right; background-size: 18% 100%; border-bottom: 5px solid #990000')
-                table
+            .w3-container(align="left" style=' background-color: #d9d9d9; border-bottom: 5px solid #990000')
+                table(style="width:100%")
                     tr
-                        td
+                        //td
                             .w3-container
                                 img(src='/images/prometeu.jpg' style='width:250px; height:350px; border: 10px solid transparent; border-color: #990000;')
-                        td 
-                            .w3-container(style="padding-bottom:10em;")
+                        td
+                            .w3-container(style="padding-bottom:10em; margin-left:50px;")
                                 table.w3-table
                                     tr
                                         td  
-                                            font(size="6.5") 
+                                            font(size="7") 
                                                 b Prometeu Carvalho 
                                     tr
                                         td 
                                             font(size="3") 
                                                 b Mestrado Integrado em Engenharia Informática
-
-            .w3-container(style="display: flex;")
-                .w3-container(style="width: 150%;")
-                    p
-                    center
-                        .w3-container(style = 'width:40%;' )
-                            form(method='POST' action='/publicacao/principal')
-                                textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5', cols='76')
-                                input.w3-input.w3-border.w3-light-grey(type='file' name='ficheiros' multiple)
-                                button.button01(type="submit") Publicar
-                    if(lista.length > 0)
-                        hr
-                    each pub in lista
-                        center
-                            .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
-                                .w3-container(style = 'float: left;')
-                                    b= pub.nomeUser
-                                .w3-container(style = 'float: right;')
-                                    b= pub.data
-                                hr(style="border-color: #990000;")
+                        td
+                            button.button01(onclick="updateUser('a3333@alunos.uminho.pt')" style="margin-top:300px; float:right; width:150px; height:50px;") 
                                 center
-                                    text= pub.conteudo
-                            p
-                            p
+                                    b Alterar Dados
+                        
+            if(lista.length > 0)
+                hr
+            each pub in lista
+                center
+                    .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                        .w3-container(style = 'float: left;')
+                            b= pub.nomeUser
+                        .w3-container(style = 'float: right;')
+                            b= pub.data
+                        hr(style="border-color: #990000;")
+                        center
+                            text= pub.conteudo
+                        if (pub.files.length > 0)
+                            hr(style="border-color: #990000;")
+                            b Ficheiros Publicados
+                            each f in pub.files
+                                ul
+                                    li
+                                        a(href='download/' + f._id +"/" + f.name)= f.name
+                    p
+            else 
+                center
+                    hr
+                    font(size="6.5") 
+                        b Ainda sem publicações
+                    hr
     
         .w3-container(style="flex-grow: 1;")    
             include chat

@@ -6,7 +6,7 @@ module.exports.listarTodosUsers = () => {
 }
 
 module.exports.consultarUserId = id => {
-    return User.find({_id: id}).exec()
+    return User.findOne({_id: id}).exec()
 }
 
 module.exports.gruposUserId = id => {
