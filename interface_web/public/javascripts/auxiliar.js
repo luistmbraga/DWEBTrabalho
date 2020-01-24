@@ -67,9 +67,18 @@ function Filevalidation(){
     } 
 } 
 
-function getGrupo(idGrupo){
-    axios.get('http://localhost:1234/grupos/' + idGrupo)
-         .catch(error => console.log(error))
+
+function onTestChange() {
+    var key = window.event.keyCode;
+
+    // If the user has pressed enter
+    if (key === 13) {
+        document.getElementById("conteudo").value = document.getElementById("conteudo").value + "\n*";
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 function logout(){

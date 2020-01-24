@@ -145,8 +145,10 @@ router.post('/ficheiros/:idContainer', function(req, res, next){
   
 })
 
+/*
 function subgrupos(dados){
   return new Promise( (resolve, reject) => {
+    if(dados.length == 0) resolve([])
     var length = dados.length
     var i = 0
     grupos = []
@@ -157,7 +159,7 @@ function subgrupos(dados){
       axios.get(apiGrupos + 'subgrupos/' + grupo)
              .then(ucs =>{
                  if(ucs.data[0].gruposFilhos.length != 0){
-                    aux.ucs = ucs.data[0].gruposFilhos
+                    aux.ucs = subgrupos(ucs.data[0])
                  }
                  grupos.push(aux)
                  if (++i == length) resolve(grupos)
@@ -166,27 +168,38 @@ function subgrupos(dados){
     })
   })
   
+}*/
+
+function subgrupos(dados){
+
 }
 
 
 
 // Eventualmente, melhorar 
-router.get('/grupos', function(req, res, next){
+router.get('/grupos/:grupo', function(req, res, next){
   // depois ir à sessão
-  var curso ="MIEI"
-  axios.get(apiGrupos + 'subgrupos/' + curso)
-       .then(dados => {
+  console.log('greijgoe')
+  var grupo = req.params.grupo
+  axios.get(apiGrupos + 'subgrupos/' + grupo)
+       .then(grupos => {
          
-         //console.log(dados.data)
-         
-         subgrupos(dados.data[0].gruposFilhos).then( grupos =>{
             
-            console.log(grupos)
-
-            axios.get('http://localhost:3054/api/users')
-                 .then( (users) => {res.render('curso', {curso: curso, grupos : grupos, users:users.data})})
-                 .catch(erro => res.status(500).render('error', {error : erro}) ) 
-         })
+          axios.get(apiPublicacoes + "grupos/" + grupo)
+            .then(dados => {
+              axios.get(apiUsers)
+                  .then( (users) => {
+                      getFicheiros(dados.data)
+                            .then(publicacoes => {
+                              console.log(publicacoes)
+                              res.render('curso', {grupo: grupo, grupos : grupos.data[0].gruposFilhos, users:users.data, publicacoes:publicacoes})
+                            })
+                            .catch(erro => res.status(500).render('error', {error : erro}) )
+                  })
+                  .catch(erro => res.status(500).render('error', {error : erro}) )
+                   
+            })
+            .catch(erro => res.status(500).render('error', {error : erro}) ) 
         })
        .catch(erro => res.status(500).render('error', {error : erro}) )
 
@@ -262,22 +275,6 @@ router.post('/atualizaUtilizador', function(req, res, next){
 })
 
 
-router.get('/grupos/:idGrupo', function(req, res, next){
-  var idGrupo = req.params.idGrupo
-  axios.get(apiPublicacoes + "grupos/" + idGrupo)
-       .then(dados => {
-        axios.get(apiUsers)
-             .then( (users) => {
-                getFicheiros(dados.data)
-                      .then(publicacoes => {
-                        res.render('grupo', {users: users.data, publicacoes: publicacoes, idGrupo : idGrupo})
-                      })
-                      .catch(erro => res.status(500).render('error', {error : erro}) )
-             })
-             .catch(erro => res.status(500).render('error', {error : erro}) )
-       })
-       .catch(erro => res.status(500).render('error', {error : erro}) )
-})
 
 router.post('/login', function(req, res, next) {
   var email = req.body.email
@@ -299,7 +296,6 @@ function form_data_files(files, idContainer, emailUser){
   return new Promise(function(resolve, reject){
     let form_data = new FormData();
     var length = files.length - 1
-    var sizeFiles = 0
     for(var i = 0; i <= length; ){
       sizeFiles = files[i].size
       form_data.append('ficheiro', fs.createReadStream(files[i].path), files[i].originalname)
@@ -308,8 +304,25 @@ function form_data_files(files, idContainer, emailUser){
         // verificar na auttenticação
         form_data.append("emailUser", emailUser)
         form_data.append("idContainer", idContainer)
-        form_data.
         resolve(form_data)
+      }
+    }
+  })
+}
+
+function limpaUpload(files){
+  return new Promise(function(resolve, reject){
+    var length = files.length - 1
+    for(var i = 0; i <= length; ){
+      fs.unlinkSync(files[i].path , (err) => {
+        if (err) {
+          console.error(err)
+        }
+      
+        //file removed
+      })
+      if(i++ == length) {
+        resolve([])
       }
     }
   })
@@ -317,7 +330,9 @@ function form_data_files(files, idContainer, emailUser){
 
 function post_ficheiro(files, idContainer, emailUser){
   return new Promise(function(resolve, reject){
-    form_data_files(files, idContainer, emailUser)
+    var ficheiros = files
+
+    form_data_files(ficheiros, idContainer, emailUser)
           .then(form_data => {
             const request_config = {
               headers: {
@@ -326,7 +341,9 @@ function post_ficheiro(files, idContainer, emailUser){
             };
             
             axios.post(apiFicheiros, form_data, request_config)  
-                  .then(dados => resolve(dados))
+                  .then(dados => {
+                    limpaUpload(ficheiros)
+                    resolve(dados)})
                   .catch(erro => console.log(erro))
           })
     
@@ -352,12 +369,10 @@ router.post('/publicacao/:grupo', upload.array('ficheiros'), function(req, res, 
           idPublicacao = publicacao.data._id
           
           post_ficheiro(files, idPublicacao, "lguilhermem@hotmail.com")
-            .then(dados => res.redirect('/feedNoticias'))
-
-            res.redirect('/feedNoticias')
+            .then(() => res.redirect('/grupos/' + req.params.grupo))
 
          }
-         else res.redirect('/feedNoticias') 
+         else res.redirect('/grupos/' + req.params.grupo) 
        })
        .catch(erro => res.status(500).render('error', {error : erro}) )
 

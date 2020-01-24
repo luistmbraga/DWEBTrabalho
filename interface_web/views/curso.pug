@@ -1,27 +1,47 @@
 extends layoutAutenticado
 block content
     .w3-container(style="display: flex;")
-        .w3-container(style="width: 150%;")
+        .w3-container(style='width:40%;')
+            if grupos.length > 0
+                h4
+                    b SubGrupos
+                each grupo in grupos
+                    .w3-container(style='border-width:2px; background-color:white; border-style:double; border-color:#990000;')
+                        form(method='GET' action='/grupos/'+ grupo)
+                            button(style='width:100%; height:100%;' type='submit')= grupo 
+                    p
+        .w3-container(style="width: 300%;")
             center
                 h2
-                    font(size= '40')= 'Curso ' + curso
+                    font(size= '20')= 'Curso ' + grupo
                 hr(style="border-color: #990000;")
-                .w3-container
-                    each grupo in grupos
-                        .w3-container(style='width:40%; border-width:2px; background-color:white; border-style:double; border-color:#990000;')
-                            b
-                                font(style='color:#990000')= grupo.name 
+                .w3-container(style = 'width:40%;')
+                    form( method='POST' action='/publicacao/'+grupo enctype='multipart/form-data')
+                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." onkeypress="onTestChange()" rows='5', cols='76')
+                        input.w3-input.w3-border.w3-light-grey(id= 'ficheiros' type='file' name='ficheiros' onchange="Filevalidation()" multiple)
+                        button.button01(type="submit" name="submit") Publicar
+                        
+                if(publicacoes.length > 0)
+                    hr(style='color:#990000' )
+                    b Publicacoes
+                    each pub in publicacoes
+                        center
+                            .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                                .w3-container(style = 'float: left;')
+                                    b= pub.nomeUser
+                                .w3-container(style = 'float: right;')
+                                    b= pub.data
+                                hr(style="border-color: #990000;")
+                                center
+                                    text= pub.conteudo
+                                if (pub.files.length > 0)
+                                    hr(style="border-color: #990000;")
+                                    b Ficheiros Publicados
+                                    each f in pub.files
+                                        ul
+                                            li
+                                                a(href='download/' + f._id +"/" + f.name)= f.name
                             p
-                            button.button01(type= 'button' style='width:40%;' onclick="getGrupo('"+ grupo.name +"')'" ) Ver Grupo
-                            hr(style="border-color: #990000;")
-                            if grupo.ucs.length > 0
-                                b Lista de Cadeiras lecionadas:
-                                p
-                                each uc in grupo.ucs
-                                    .w3-container(style='border-width:2px; background-color:white; border-style:double; border-color:#990000;')
-                                        b= uc
-                                    p
-                        p
         .w3-container(style="flex-grow: 1;")    
             include chat
                             
