@@ -7,12 +7,11 @@ block content
             center
                 .w3-container(style = 'width:40%;')
                     form( method='POST' action='publicacao/'+idGrupo enctype='multipart/form-data')
-                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5', cols='76')
+                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." onkeypress="onTestChange();" rows='5', cols='76')
                         input.w3-input.w3-border.w3-light-grey(id= 'ficheiros' type='file' name='ficheiros' onchange="Filevalidation()" multiple)
                         button.button01(type="submit" name="submit") Publicar
-
                         
-            if(lista.length > 0)
+            if(publicacoes.length > 0)
                 hr
             each pub in publicacoes
                 center
