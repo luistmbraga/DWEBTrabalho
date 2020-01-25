@@ -8,8 +8,8 @@ block content
                 each grupo in grupos
                     .w3-container(style='border-width:2px; background-color:white; border-style:double; border-color:#990000;')
                         form(method='GET' action='/grupos/'+ grupo)
-                            button(style='width:100%; height:100%;' type='submit')= grupo 
-                    p
+                            button(style='width:100%;' type='submit')= grupo 
+                    
         .w3-container(style="width: 300%;")
             center
                 h2
@@ -17,7 +17,7 @@ block content
                 hr(style="border-color: #990000;")
                 .w3-container(style = 'width:40%;')
                     form( method='POST' action='/publicacao/'+grupo enctype='multipart/form-data')
-                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." onkeypress="onTestChange()" rows='5', cols='76')
+                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." onkeydown="if(event.keyCode == 13) return false;" rows='5', cols='76')
                         input.w3-input.w3-border.w3-light-grey(id= 'ficheiros' type='file' name='ficheiros' onchange="Filevalidation()" multiple)
                         button.button01(type="submit" name="submit") Publicar
                         
@@ -30,7 +30,7 @@ block content
                                 .w3-container(style = 'float: left;')
                                     b= pub.nomeUser
                                 .w3-container(style = 'float: right;')
-                                    b= pub.data
+                                    b= pub.dataFormatada
                                 hr(style="border-color: #990000;")
                                 center
                                     text= pub.conteudo

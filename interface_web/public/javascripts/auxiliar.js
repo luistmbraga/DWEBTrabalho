@@ -48,6 +48,12 @@ function updateUser(idUser){
         })
 }
 
+function apagaPublicacao(id){
+    console.log(id)
+    axios.delete('http://localhost:1234/publicacao/' + id)
+         .catch(error => console.log(error))
+}
+
 function Filevalidation(){ 
     const fi = document.getElementById('ficheiros'); 
     // Check if any file is selected. 
