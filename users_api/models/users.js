@@ -2,14 +2,15 @@ var mongoose = require('mongoose')
 
 
 var userSchema = new mongoose.Schema({_id: {type: String, required: true},
-                                        pass: {type:String, required: true},
-                                        numAluno: {type: String, required: true},
+                                        pass: String,
+                                        numAluno: String,
                                         nome: {type: String, required: true},
-                                        dataNasc: {type: String, required: true}, // dia/mes/ano
+                                        dataNasc: String, // dia/mes/ano
                                         sexo: String,
-                                        numTelemovel: {type: Number, required: true},
-                                        curso: {type: String, required: true},
-                                        grupos: [String] // ids dos grupos a que pertence
+                                        numTelemovel: Number,
+                                        curso: String,
+                                        grupos: [String], // ids dos grupos a que pertence
+                                        nAcess: Number,
                                        });
 
 

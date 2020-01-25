@@ -21,6 +21,23 @@ function showRegisto(){
     $('#display').modal()
 }
 
+
+function showRegistoFacebook(){
+    var registo = 
+    '<div class="w3-container">' +
+    ' <form method="POST" action="/utilizadorFacebook"><input class="w3-input w3-border"' +
+    ' type="date" name="dataNasc" placeholder="Data de Nascimento" required="required" ' +
+    ' /><input class="w3-input w3-border" type="text" name="numAluno" placeholder="Identificador (Número) de Estudante" required="required"' + 
+    ' /><input class="w3-input w3-border" type="text" name="sexo" placeholder="Sexo" /> ' + 
+    '<input class="w3-input w3-border" type="number" name="numTelemovel" placeholder="Número de telemóvel" ' +
+        '/><input class="w3-input w3-border" type="text" name="curso" placeholder="Curso" /> </hr>' + 
+        '<button class="w3-hover-red" type="submit" style="background-color: red; color: white; width:50%; padding:15px; ' + 
+        'font-size:20px; border-radius: 12px;">Avançar</button></form> </div>'
+
+    $('#teste').append(registo)
+}
+
+
 function updateUser(idUser){
     axios.get('http://localhost:1234/user/' + idUser)
         .then(dados => {

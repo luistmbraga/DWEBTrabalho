@@ -15,12 +15,8 @@ module.exports.gruposUserId = id => {
 
 module.exports.inserirUser = dados => {
     var user = new User(dados);
-    console.log(user);
 
-    user.save(function (err, u) {
-        if (err) return console.error(err);
-        else console.log('Foi inserido com sucesso.')
-    })
+    return user.save();
 }
 
 module.exports.apagarUser = id => {
