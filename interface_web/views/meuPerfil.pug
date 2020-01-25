@@ -44,6 +44,8 @@ block content
                                 ul
                                     li
                                         a(href='download/' + f._id +"/" + f.name)= f.name
+                        button(type='button' onclick="apagaPublicacao('" + pub._id + "')" class="fa fa-trash" style="background-color: black; color: white; padding: 22px 22px; border-radius: 12px;").w3-hover-red
+
                     p
             else 
                 center
