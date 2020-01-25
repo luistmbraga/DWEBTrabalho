@@ -6,8 +6,8 @@ block content
             p
             center
                 .w3-container(style = 'width:40%;' )
-                    form( method='POST' action='publicacao/principal' enctype='multipart/form-data')
-                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5', cols='76')
+                    form( method='POST' action='publicacao/UM' enctype='multipart/form-data')
+                        textarea(style='resize:none; width:100%;' id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5')
                         input.w3-input.w3-border.w3-light-grey(id= 'ficheiros' type='file' name='ficheiros' onchange="Filevalidation()" multiple)
                         button.button01(type="submit" name="submit") Publicar
 

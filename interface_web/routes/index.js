@@ -172,7 +172,7 @@ router.get('/grupos/:grupo', function(req, res, next){
 })
 
 router.get('/feedNoticias', function(req, res, next){
-  axios.get(apiPublicacoes + "grupos/principal")
+  axios.get(apiPublicacoes + "grupos/UM")
         .then(dados => {
             axios.get(apiUsers)
               .then( (users) => {
@@ -347,9 +347,7 @@ router.delete('/publicacao/:idPublicacao', function(req, res, next){
 
   axios.delete(apiPublicacoes + "/" + idPublicacao)
        .then(() => {
-         res.method = 'GET'
-         res.redirect('/meuPerfil')
-
+         res.end(0)
       })
        .catch(erro => res.status(500).render('error', {error : erro}) )
 })

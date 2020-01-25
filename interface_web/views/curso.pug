@@ -17,7 +17,7 @@ block content
                 hr(style="border-color: #990000;")
                 .w3-container(style = 'width:40%;')
                     form( method='POST' action='/publicacao/'+grupo enctype='multipart/form-data')
-                        textarea(id = "conteudo" name="conteudo" placeholder= "Escreva o que lhe vai na alma..." onkeydown="if(event.keyCode == 13) return false;" rows='5', cols='76')
+                        textarea(id = "conteudo" style='width:100%; resize:none;' name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5')
                         input.w3-input.w3-border.w3-light-grey(id= 'ficheiros' type='file' name='ficheiros' onchange="Filevalidation()" multiple)
                         button.button01(type="submit" name="submit") Publicar
                         
@@ -40,7 +40,7 @@ block content
                                     each f in pub.files
                                         ul
                                             li
-                                                a(href='download/' + f._id +"/" + f.name)= f.name
+                                                a(href='../download/' + f._id +"/" + f.name)= f.name
                             p
         .w3-container(style="flex-grow: 1;")    
             include chat

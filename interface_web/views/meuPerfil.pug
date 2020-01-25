@@ -35,6 +35,10 @@ block content
                         .w3-container(style = 'float: right;')
                             b= pub.data
                         hr(style="border-color: #990000;")
+                        .w3-container
+                            center
+                                b= 'Grupo: ' + pub.grupo
+                        hr(style="border-color: #990000;")
                         center
                             text= pub.conteudo
                         if (pub.files.length > 0)

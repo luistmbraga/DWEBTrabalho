@@ -51,6 +51,7 @@ function updateUser(idUser){
 function apagaPublicacao(id){
     console.log(id)
     axios.delete('http://localhost:1234/publicacao/' + id)
+         .then(() => location.reload(true))
          .catch(error => console.log(error))
 }
 

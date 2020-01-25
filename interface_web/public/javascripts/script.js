@@ -72,7 +72,7 @@ $(document).ready(function(){
 
 	
 	//var chatbox;
-	$(document).on('keypress', 'textarea' , function(e) {   
+	$(document).on('keypress', '.msg_input' , function(e) {   
 		//se pressiona enter	    
         if (e.keyCode == 13 ) { 		
 			var msg = $(this).val();		

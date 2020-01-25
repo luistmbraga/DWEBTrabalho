@@ -5,6 +5,7 @@ const Publicacoes = module.exports
 Publicacoes.listar = () =>{
     return Publicacao
         .find()
+        .sort({data: -1})
         .exec()
 }
 
@@ -23,6 +24,7 @@ Publicacoes.contar = () =>{
 Publicacoes.projectar = campos =>{
     return Publicacao
     .find({}, campos)
+    .sort({data: -1})
     .exec()
 }
 
@@ -44,11 +46,13 @@ Publicacoes.remove= (id) =>{
 Publicacoes.getUserPublicacoes = (email) =>{
     return Publicacao
         .find({emailUser:email})
+        .sort({data: -1})
         .exec()
 }
 
 Publicacoes.getGrupoPublicacoes = (nome) =>{
     return Publicacao
         .find({grupo:nome})
+        .sort({data: -1})
         .exec()
 }
