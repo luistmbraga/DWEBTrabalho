@@ -1,5 +1,12 @@
 [
     {
+        "_id": "UM",
+        "curso": "UM",
+        "gruposFilhos": [],
+        "desc_dependencia": true
+    }
+    ,
+    {
     "gruposFilhos": [
                 "MIEI-Primeiro Ano",
                 "MIEI-Segundo Ano",
