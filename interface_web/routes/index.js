@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router();
 
 var axios = require('axios')
@@ -10,6 +11,11 @@ var apiPublicacoes = 'http://localhost:3053/api/publicacoes/'
 var apiUsers = 'http://localhost:3054/api/users/'
 var apiFicheiros = 'http://localhost:3055/api/ficheiros/'
 
+
+var passport = require('passport')
+var flash = require('connect-flash')
+var bcrypt = require('bcryptjs')
+var jwt = require('jsonwebtoken')
 
 
 var FormData = require('form-data');
@@ -240,16 +246,19 @@ router.post('/atualizaUtilizador', function(req, res, next){
 
 
 
-router.post('/login', function(req, res, next) {
-  var email = req.body.email
-  var password = req.body.password
+router.post('/login', passport.authenticate('local', 
+  { successRedirect: '/feedNoticias',
+    successFlash: 'Utilizador autenticado com sucesso!',
+    failureRedirect: '/',
+    failureFlash: 'Utilizador ou password inválido(s)...'
+  })
+)
 
-  res.redirect('/feedNoticias')
-})
-
-router.post('/utilizador', function(req, res, next){
+router.post('/utilizador', verificaAutenticacao,function(req, res, next){
   var newUser = req.body
+  newUser.pass = bcrypt.hashSync(req.body.pass, 10);
   newUser.grupos = []
+  console.log(newUser)
   axios.post(apiUsers, newUser)
        .then( () => res.redirect('/') )
        .catch(erro => res.status(500).render('error', {error : erro}) )
@@ -273,6 +282,17 @@ function form_data_files(files, idContainer, emailUser){
     }
   })
 }
+
+router.post('/utilizadorFacebook', verificaAutenticacao,function(req, res, next){
+  var newUser = req.body
+  newUser.grupos = []
+  console.log(newUser)
+  console.log(req.session)
+  console.log(req.session.passport.user)
+  axios.put(apiUsers+"/"+req.session.passport.user+"?token="+getToken(), newUser)
+       .then( () => res.redirect('/feedNoticias') )
+       .catch(erro => res.status(500).render('error', {error : erro}) )
+})
 
 function limpaUpload(files){
   return new Promise(function(resolve, reject){
@@ -345,11 +365,43 @@ router.post('/publicacao/:grupo', upload.array('ficheiros'), function(req, res, 
 router.delete('/publicacao/:idPublicacao', function(req, res, next){
   var idPublicacao = req.params.idPublicacao
 
-  axios.delete(apiPublicacoes + "/" + idPublicacao)
+  axios.delete(apiPublicacoes + idPublicacao)
        .then(() => {
-         res.end(0)
+         res.jsonp("Eliminado com Sucesso!")
       })
        .catch(erro => res.status(500).render('error', {error : erro}) )
 })
 
+
+router.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    if(req.session.passport.user.grupo == null)
+      res.render('registaFacebook');
+    else
+      res.redirect('/feedNoticias');
+  });
+
+
+function verificaAutenticacao(req,res,next){
+    console.log("VOU TENTAR AUTENTICAR")
+    if(req.isAuthenticated()){
+    //req.isAuthenticated() will return true if user is logged in
+      next();
+    } else{
+      res.redirect("/");}
+  }
+
+  function getToken(){
+    return  jwt.sign({ sub: 'token gerado na aula DAW2019',teste:'Token de teste'},"daw2019",
+    {
+        expiresIn: 60,
+        issuer:'Servidor myAgenda',
+    })
+  }
+  
 module.exports = router;
