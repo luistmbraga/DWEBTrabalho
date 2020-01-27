@@ -14,19 +14,63 @@ block content
                                 table.w3-table
                                     tr
                                         td  
-                                            font(size="7") 
-                                                b Prometeu Carvalho 
+                                            
+                                            font(size="5") 
+                                                label 
+                                                    b Nome: 
+                                                b=user.nome
                                     tr
                                         td 
-                                            font(size="3") 
-                                                b Mestrado Integrado em Engenharia Informática
+                                            font(size="5") 
+                                                label 
+                                                    b Curso: 
+                                                b=user.curso
+                                    tr
+                                        td 
+                                            font(size="5") 
+                                                label 
+                                                    b Sexo: 
+                                                b=user.sexo
+                                    tr
+                                        td 
+                                            font(size="5") 
+                                                label 
+                                                    b Data Nascimento: 
+                                                b=user.dataNasc
+
+                                    tr
+                                        td 
+                                            font(size="5") 
+                                                label 
+                                                    b Nº Aluno: 
+                                                b=user.numAluno
+                                    tr
+                                        td 
+                                            font(size="5") 
+                                                label 
+                                                    b Telemóvel: 
+                                                b=user.numTelemovel
+                                    if(user.grupos.length > 0)
+                                        tr
+                                            td 
+                                                font(size="5") 
+                                                    label 
+                                                        b Grupos: 
+                                                ul
+                                                    each g in user.grupos
+                                                        li g
+                                    
                         td
-                            button.button01(onclick="updateUser('a3333@alunos.uminho.pt')" style="margin-top:300px; float:right; width:150px; height:50px;") 
+                            button.button01(onclick="updateUser('"+user._id+"')" style="margin-top:300px; float:right; width:150px; height:50px;") 
                                 center
                                     b Alterar Dados
                         
             if(lista.length > 0)
                 hr
+                center
+                    h3 
+                        b Publicações de #{user.nome}
+                        p
             each pub in lista
                 center
                     .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')

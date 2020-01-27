@@ -11,6 +11,7 @@ var userSchema = new mongoose.Schema({_id: {type: String, required: true},
                                         curso: String,
                                         grupos: [String], // ids dos grupos a que pertence
                                         nAcess: Number,
+                                        token: String
                                        });
 
 

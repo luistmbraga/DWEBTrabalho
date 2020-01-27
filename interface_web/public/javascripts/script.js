@@ -1,9 +1,9 @@
 var conversas;
 
 $(document).ready(function(){
-	var teste = "a1@alunos.uminho.pt";
-	var socket = io.connect('http://localhost:1234',{ query: "username="+teste });
-	console.log(teste);
+	var socket = io.connect('http://localhost:1234',{ query: "username="+id_user });
+	console.log(id_user);
+	
 
 	var arr = []; // List of users	
 		console.log(users);
@@ -37,7 +37,7 @@ $(document).ready(function(){
 			 for(j in users){
 				 if(conversas[i].participantes[0] == users[j]._id || conversas[i].participantes[1] == users[j]._id){
 					 users[j].id_conversa = conversas[i]._id;
-					 console.log("LALALALALLALAA" + users[j]._id)
+					 console.log("conversa com" + users[j]._id)
 					 break;
 				 }
 			 }
@@ -45,7 +45,8 @@ $(document).ready(function(){
 			 console.log(users)
 	 if(user.id_conversa == undefined){
 		console.log("CRIOU CONVERSA")
-		createConversa(user._id,teste)
+		console.log()
+		createConversa(user._id,id_user)
 			.then((conversa) => user.id_conversa = conversa._id )
 	 }
 	 displayUserMessages(user)
@@ -59,7 +60,15 @@ $(document).ready(function(){
 					'<div class="msg_head">'+username +
 					'<div class="close">x</div> </div>'+
 					'<div class="msg_wrap"> <div class="msg_body">	<div class="msg_push"></div> </div>'+
-					'<div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div> 	</div> 	</div>' ;					
+					'<div class="msg_footer">'+
+					'<div style="display:flex">'+
+					'<div style="width:150%"> <textarea class="msg_input" rows="4" style="resize:none; width:200px;"></textarea></div>'+
+					'<div style="flex-grow:1">'+
+					'<label for="file-input">'+
+					'<img src="https://icon-library.net/images/upload-photo-icon/upload-photo-icon-21.jpg"/>'+
+				  	'</label>'+
+					'<input id="file-input"  style="display: none;" type="file" name="ficheiros" multiple>'+
+					'</div></div></div> 	</div> 	</div>' ;					
 				
      $("body").append(  chatPopup  );
 	 displayChatBox();
@@ -74,11 +83,12 @@ $(document).ready(function(){
 	//var chatbox;
 	$(document).on('keypress', '.msg_input' , function(e) {   
 		//se pressiona enter	    
+		console.log("FFF")
         if (e.keyCode == 13 ) { 		
 			var msg = $(this).val();		
 			$(this).val('');
 			if(msg.trim().length != 0){			
-				var chatbox = $(this).parents().parents().parents().attr("rel") ;
+				var chatbox = $(this).parents().parents().parents().parents().parents().attr("rel") ;
 				$('<div class="msg-right">'+msg+'</div>').insertBefore('[rel="'+chatbox+'"] .msg_push');
 				$('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
 				var data = {}
@@ -86,7 +96,7 @@ $(document).ready(function(){
 				data.to = user._id;
 				data.idConversa = user.id_conversa;
 				data.texto = msg;
-				data.from = teste;
+				data.from = id_user;
 				socket.emit('private', data);
 			}
         }
@@ -128,7 +138,7 @@ $(document).ready(function(){
 	function displayMessage(msg,userId){
 		var type;
 		console.log(msg)
-		if(msg.from == teste) type = "right"; else type = "left";
+		if(msg.from == id_user) type = "right"; else type = "left";
 		$('<div class="msg-'+type+'">'+msg.texto+'</div>').insertBefore('[rel="'+userId+'"] .msg_push');
 				$('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
 	}
@@ -174,6 +184,15 @@ function refreshConversas(){
 				}
 		})
 
+}
+
+function initUsers(){
+	for(i in users){
+		if(users[i]._id == id_user){
+			users.splice(i,1);
+			break;
+		}
+	}
 }
 
 function getUser(id){

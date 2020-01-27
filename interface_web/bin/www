@@ -42,7 +42,9 @@ var io = require('socket.io').listen(server);
     socket.on('private', function(data){
       console.log('message: ' + JSON.stringify(data));
       axios.post('http://localhost:3051/api/mensagens',data)
-        .then( () => connectedSockets[data.to].emit("private", data))
+        .then( () => { 
+          connectedSockets[data.to].emit("private", data) 
+        })
         .catch(erro =>{ console.log("ERRO: "+erro);data.erro ="Mensagem Não enviada, tente novamente mais tarde"; connectedSockets[data.from].emit("erro",data )})
     
       

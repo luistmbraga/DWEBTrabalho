@@ -1,0 +1,23 @@
+extends layoutAutenticado
+block content
+    .w3-container(style="display: flex;")
+        .w3-container(style='width:100%;')
+            center
+                h4
+                    b Grupos Disponíveis
+            if grupos.length > 0
+                center
+                    table 
+                        each g in grupos
+                                    tr
+                                        td
+                                            font(size="4") 
+                                                label 
+                                                    b=g._id
+                                        td(style ="padding-left:50px;padding-bottom:10px")
+                                            a(href='/pedirAcesso/'+g._id) Pedir Acesso
+                                
+        .w3-container(style="flex-grow: 1;")    
+            include chat
+                        
+            

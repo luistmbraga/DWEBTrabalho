@@ -20,6 +20,8 @@ html
     body
         script.
             var users = !{JSON.stringify(users)}
+            var id_user = !{JSON.stringify(user)}
+            initUsers()
         .w3-container
             .w3-card-4
                 header.w3-container(style = 'background-color: #990000; padding-bottom:10px; padding-top:10px; border-bottom: 1px solid; border-color:white;')
@@ -27,9 +29,11 @@ html
                     h1
                         font(color="white" style="padding-left:35%;") UMBook 
             .topnav
-                a(href='/feedNoticias' style='padding-left:10px;') Feed
+                a(href='/grupos/UM' style='padding-left:10px;') Feed
                 a(href='/meuPerfil/') Meu Perfil
                 a(href='/grupos/MIEI') Grupo de Curso
+                a(href='/meusgrupos') Meus Grupos
+                a(href='/grupos') Todos Grupos
                 a(href="/logout" style='float:right;') Terminar Sessão
             block content    
         footer.w3-container(style="background-color: #990000;")

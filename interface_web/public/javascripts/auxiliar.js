@@ -44,9 +44,11 @@ function updateUser(idUser){
             console.log(dados)
             var registo = 
             '<div class="w3-container">' +
+             '<h3> Alterar Utilizador </h3>'+   
                 '<form method="POST" action="http://localhost:1234/atualizaUtilizador/">' +
                     '<input class="w3-input w3-border" type="text" name="_id" value="'+ dados.data.email +'" required="required"/>' +
                     '<input class="w3-input w3-border" type="text" name="dataNasc" value="'+dados.data.dataNasc+'" onfocus="(this.type=`date`)" />' +
+                    '<input class="w3-input w3-border" type="password" name="pass" value="" placeholder="password" />' +
                     '<input class="w3-input w3-border" type="text" name="numAluno" value="'+dados.data.identificador+'" />' +
                     '<input class="w3-input w3-border" type="text" name="nome" value="'+dados.data.nome+'"  />' +
                     '<input class="w3-input w3-border" type="text" name="sexo" value="'+dados.data.sexo+'" /> ' + 

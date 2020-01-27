@@ -1,0 +1,12 @@
+extends layout
+block content
+    .w3-container
+        center
+            h3
+                b Conta inativa
+        hr
+        p A sua conta encontra-se inativa.
+        p Para ativar a sua conta basta ir ao seu email e clicar no link que lhe foi enviado.
+        p Para lhe voltarmos a enviar o email de confirmação clique na seguinte hiperligação.
+        a(href='/resendEmail/'+user._id) Reenviar Email
+

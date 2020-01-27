@@ -50,4 +50,11 @@
         "gruposFilhos": [],
         "desc_dependencia": false
     }
+    ,
+    {
+        "_id": "UM",
+        "curso": "UM",
+        "gruposFilhos": [],
+        "desc_dependencia": false
+    }
 ]

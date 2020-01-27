@@ -30,8 +30,9 @@ var extractFromBody = function(req){
 
 passport.use(new JWTStrategy({
   secretOrKey: 'daw2019',
-  jwtFromRequest:ExtractJWT.fromExtractors([extractFromQS,extractFromBody])
-}, async (payload,done) =>{
+  jwtFromRequest:ExtractJWT.fromExtractors([extractFromQS,extractFromBody]),
+  passReqToCallback: true
+}, async (req,payload,done) =>{
   try{
     return done(null,payload)
   }

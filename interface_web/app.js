@@ -37,10 +37,10 @@ function(accessToken, refreshToken, user, cb) {
   newUser.sexo = user.genre
   newUser.nAcess = 1
 
-  var token = jwt.sign({ sub: 'token gerado na aula DAW2019',teste:'Token de teste'},"daw2019",
+  var token = jwt.sign({ sub: 'token gerado no TP DAW2019',nAcess:0},"daw2019",
   {
       expiresIn: 60,
-      issuer:'Servidor myAgenda',
+      issuer:'Servidor UMbook',
   })
 
 console.log(newUser)
@@ -67,10 +67,10 @@ console.log(newUser)
 // Configuração da estratégia local
 passport.use(new LocalStrategy(
   {usernameField: 'email'}, (email, password, done) => {
-    var token = jwt.sign({ sub: 'token gerado na aula DAW2019',teste:'Token de teste'},"daw2019",
+    var token = jwt.sign({ sub: 'token gerado no TP DAW2019',nAcess:0},"daw2019",
     {
         expiresIn: 60,
-        issuer:'Servidor myAgenda',
+        issuer:'Servidor UMbook',
     })
   axios.get('http://localhost:3054/api/users/' + email+'?token='+token)
     .then(dados => {
@@ -90,18 +90,19 @@ passport.use(new LocalStrategy(
 passport.serializeUser((user,done) => {
   console.log('Vou serializar o user: ' + JSON.stringify(user))
   // Serialização do utilizador. O passport grava o utilizador na sessão aqui.
-  done(null, user._id)
+  done(null, {email:user._id,nAcess:user.nAcess})
 })
   
 // Desserialização: a partir do id obtem-se a informação do utilizador
-passport.deserializeUser((email, done) => {
-  var token = jwt.sign({ sub: 'token gerado na aula DAW2019',teste:'Token de teste'},"daw2019",
+passport.deserializeUser((o, done) => {
+  console.log(o)
+  var token = jwt.sign({ sub: 'token gerado na aula DAW2019',nAcess:0},"daw2019",
   {
       expiresIn: 60,
-      issuer:'Servidor myAgenda',
+      issuer:'Servidor UMbook',
   })
-  console.log('Vou desserializar o utilizador: ' + email)
-  axios.get('http://localhost:3054/api/users/' + email+'?token='+token)
+  console.log('Vou desserializar o utilizador: ' + o.email)
+  axios.get('http://localhost:3054/api/users/' + o.email+'?token='+token)
     .then(dados => done(null, dados.data))
     .catch(erro => done(erro, false))
 })
@@ -114,19 +115,18 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-console.log("OLA")
 app.use(session({
   genid: req => {
     console.log('Dentro do middleware da sessão...')
     console.log(req.sessionID)
     return uuid()
   },
-  store: new FileStore(),
+  //store: new FileStore(),
   secret: 'O meu segredo',
   resave: false,
   saveUninitialized: true
 }))
-app.use(cookieParser());
+
 app.use(passport.initialize());
 app.use(passport.session());
   
@@ -135,6 +135,7 @@ app.use(flash());
 app.use(bodyParser.json({limit: '100mb'}))
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));

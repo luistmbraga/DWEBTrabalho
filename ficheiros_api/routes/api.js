@@ -33,9 +33,9 @@ router.get('/download/:idFicheiro', function(req, res){
 
   Ficheiros.getPath(req.params.idFicheiro)
     .then(dados => {
-      
+      console.log(dados[0].path)
 
-      res.download(dados[0].path)
+      //res.download(dados[0].path)
 
 
     })

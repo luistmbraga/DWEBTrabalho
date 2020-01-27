@@ -1,6 +1,7 @@
 block content        
         #chat-sidebar
             each a in users
-                .sidebar-user-box(id=""+a._id+"")
-                    img(src='/images/user.png')
-                    span#slider-username=a.nome
+                if(a._id != user)
+                    .sidebar-user-box(id=""+a._id+"")
+                        img(src='/images/user.png')
+                        span#slider-username=a.nome
