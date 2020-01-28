@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('interface-web:server');
 var http = require('http');
 var axios = require('axios')
+var jwt = require('jsonwebtoken')
 
 
 /**
@@ -40,8 +41,13 @@ var io = require('socket.io').listen(server);
 
 
     socket.on('private', function(data){
-      console.log('message: ' + JSON.stringify(data));
-      axios.post('http://localhost:3051/api/mensagens',data)
+      var token =  jwt.sign({ sub: 'token gerado no TP DAW2019',nAcess:0},"daw2019",
+      {
+          expiresIn: 60,
+          issuer:'Servidor Interface Web',
+      })
+      console.log('message: ' + JSON.stringify(data) );
+      axios.post('http://localhost:3051/api/mensagens'+"?token="+token,data)
         .then( () => { 
           connectedSockets[data.to].emit("private", data) 
         })
