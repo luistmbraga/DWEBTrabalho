@@ -5,14 +5,14 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('api:server');
+var debug = require('debug')('dbmanager:server');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '4545');
+var port = normalizePort(process.env.PORT || '3056');
 app.set('port', port);
 
 /**
