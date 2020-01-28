@@ -204,7 +204,7 @@ router.get('/meuPerfil',verificaAutenticacao, function(req, res, next){
   
   var userid = getUserID(req)
   console.log(userid)
-  axios.get(apiPublicacoes + "users/" + userid)
+  axios.get(apiPublicacoes + "users/" + userid+"?token="+getUserAcessToken(req))
     .then(dados => {
       axios.get(apiUsers+"?token="+getUserAcessToken(req))
         .then( (users) => {

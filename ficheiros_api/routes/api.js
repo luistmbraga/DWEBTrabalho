@@ -8,40 +8,54 @@ var upload = multer({dest: 'uploads/'})
 var md5 = require('md5');
 const mkdirp = require('mkdirp-promise')
 
-router.get('/ficheiros/:idFicheiro', function(req, res) {
+
+var passport = require('passport')
+
+function checkPermissao(acess){
+  return function(req, res, next) {
+  if(acess == 0 || req.user.nAcess>=acess){
+    console.log("Tem permissão")
+    next()
+  }
+  else{
+  console.log("Não tem permissão")
+  res.status(401).jsonp("Não tem permissão")
+  }
+  }
+}
+
+router.get('/ficheiros/:idFicheiro', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res) {
   Ficheiros.getDados(req.params.idFicheiro)
     .then(dados => res.jsonp(dados))
     .catch(erro => res.status(500).jsonp(erro))
 });
 
 /* GET users listing. */
-router.get('/ficheiros', function(req, res) {
+router.get('/ficheiros', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res) {
   Ficheiros.listar()
     .then(dados => res.jsonp(dados))
     .catch(erro => res.status(500).jsonp(erro))
 });
 
 
-router.get('/ficheiros/publicacao/:idContainer', function(req, res){
+router.get('/ficheiros/publicacao/:idContainer', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res){
   Ficheiros.getInfoPublicacoes(req.params.idContainer)
   .then(dados => res.jsonp(dados))
   .catch(erro => res.status(500).jsonp(erro))
 })
 
 
-router.get('/download/:idFicheiro', function(req, res){
+router.get('/download/:idFicheiro', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res){
 
   Ficheiros.getPath(req.params.idFicheiro)
     .then(dados => {
       console.log(dados[0].path)
 
-      //res.download(dados[0].path)
+      res.download(dados[0].path)
 
 
     })
     .catch(erro => res.status(500).jsonp(erro))
-
-  
 })
 
 
@@ -100,7 +114,7 @@ function addFiles(files, body) {
 }
 
 // Inserir um ficheiro na pasta de grupos
-router.post('/ficheiros', upload.array('ficheiro'), function(req, res){
+router.post('/ficheiros', passport.authenticate('jwt', {session: false}),checkPermissao(0),upload.array('ficheiro'), function(req, res){
   //console.log(req.files)
   console.log(req.body)
   addFiles(req.files, req.body)
@@ -111,7 +125,7 @@ router.post('/ficheiros', upload.array('ficheiro'), function(req, res){
 
 
 
-router.delete('/ficheiros/:idFicheiro', function(req, res){
+router.delete('/ficheiros/:idFicheiro', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res){
 
   Ficheiros.getPath(req.params.idFicheiro)
     .then(dados => {

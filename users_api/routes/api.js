@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Users = require('../controllers/users')
-var passport = require('passport')
+
 var crypto = require('crypto');
+var passport = require('passport')
 
 function checkPermissao(acess){
   return function(req, res, next) {

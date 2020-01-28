@@ -15,50 +15,50 @@ block content
                                     tr
                                         td  
                                             
-                                            font(size="5") 
+                                            font(size="4") 
                                                 label 
                                                     b Nome: 
-                                                b=user.nome
+                                                =user.nome
                                     tr
                                         td 
-                                            font(size="5") 
+                                            font(size="4") 
                                                 label 
                                                     b Curso: 
-                                                b=user.curso
+                                                =user.curso
                                     tr
                                         td 
-                                            font(size="5") 
+                                            font(size="4") 
                                                 label 
                                                     b Sexo: 
-                                                b=user.sexo
+                                                =user.sexo
                                     tr
                                         td 
-                                            font(size="5") 
+                                            font(size="4") 
                                                 label 
                                                     b Data Nascimento: 
-                                                b=user.dataNasc
+                                                =user.dataNasc
 
                                     tr
                                         td 
-                                            font(size="5") 
+                                            font(size="4") 
                                                 label 
                                                     b Nº Aluno: 
-                                                b=user.numAluno
+                                                =user.numAluno
                                     tr
                                         td 
-                                            font(size="5") 
+                                            font(size="4") 
                                                 label 
                                                     b Telemóvel: 
-                                                b=user.numTelemovel
+                                                =user.numTelemovel
                                     if(user.grupos.length > 0)
                                         tr
                                             td 
-                                                font(size="5") 
+                                                font(size="4") 
                                                     label 
                                                         b Grupos: 
                                                 ul
                                                     each g in user.grupos
-                                                        li g
+                                                        li=g
                                     
                         td
                             button.button01(onclick="updateUser('"+user._id+"')" style="margin-top:300px; float:right; width:150px; height:50px;") 
@@ -92,7 +92,7 @@ block content
                                 ul
                                     li
                                         a(href='download/' + f._id +"/" + f.name)= f.name
-                        button(type='button' onclick="apagaPublicacao('" + pub._id + "')" class="fa fa-trash" style="background-color: black; color: white; padding: 22px 22px; border-radius: 12px;").w3-hover-red
+                        button(type='button' onclick="apagaPublicacao('" + pub._id + "')" class="fa fa-trash" style="background-color: black; color: white; padding: 10px 15px; border-radius: 12px;").w3-hover-red
 
                     p
             else 
