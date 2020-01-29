@@ -139,7 +139,7 @@ router.get('/download/:idFicheiro/:fileName',function(req, res,next){
                   if(err) {
                     console.log(err)
                   }
-                  res.redirect('/feedNoticias')
+                  res.redirect('/grupos/UM')
                 })
               }
              })
@@ -383,7 +383,7 @@ router.post('/login', passport.authenticate('local',
         else if(user.data.nAcess == -1)
           res.render('contaInativa',{user:user.data});
         else 
-          res.redirect('/feedNoticias');
+          res.redirect('/grupos/UM');
       })
 
 
@@ -517,7 +517,7 @@ router.post('/utilizadorFacebook', verificaAutenticacao,function(req, res, next)
   console.log(req.session.passport.user)
   newUser.nAcess = 0;
   axios.put(apiUsers+getUserID(req)+"?token="+getToken(4), newUser)
-       .then( () => res.redirect('/feedNoticias') )
+       .then( () => res.redirect('/grupos/UM') )
        .catch(erro => res.status(500).render('error', {error : erro}) )
 })
 
@@ -612,7 +612,7 @@ router.get('/ativarConta/:id', upload.array('ficheiros'), function(req, res, nex
     console.log(user)
     if(user.token == hash)
       axios.put(apiUsers+userId+"?token="+getToken(3),{nAcess:0})
-      .then(dados => res.redirect('/'))
+      .then(dados => res.render('ativoSucesso'))
       .catch(erro => res.status(500).render('error', {error : erro}) )
   })
   .catch(erro => res.status(500).render('error', {error : erro}) )
@@ -646,7 +646,7 @@ router.get('/pedirAcesso/:idgrupo', verificaAutenticacao,function(req, res, next
           "Telemovel: " +user.numTelemovel+"<br/>"+
           "Data Nascimento: " +user.dataNasc+"<br/>"+
           "Para Aceitar este pedido clique no link abaix:"+
-          "<a href='http://localhost:1234/?grupo="+grupo+"&user="+user._id+"'>Aceitar Pedido</a>"+
+          "<a href='http://localhost:1234/?grupo="+grupo+"&user="+user._id+"'>Aceitar Pedido</a></br>"+
           "Se alguma duvida persistir nao hesite em contactar o nosso suporte em <a href=https://www.uminho.pt/PT>https://www.uminho.pt/PT</a>" +
           "<br/>Atenciosamente<br/>UmBook <br/>UMinho!<br/><br/><img src='http://join.di.uminho.pt/images/org/ee-um.png' alt='https://www.uminho.pt/PT' style='width:400px;height:200px;'></html>"
         };
@@ -731,7 +731,7 @@ router.get('/exportData', verificaAutenticacao, function(req, res, next){
                   if(err) {
                     console.log(err)
                   }
-                  res.redirect('/feedNoticias')
+                  res.redirect('/grupos/UM')
                 })
               }
              })
@@ -758,7 +758,7 @@ router.get('/auth/facebook/callback',
       .catch(erro => res.status(500).render('error', {error : erro}) )
     }
     else
-      res.redirect('/feedNoticias');
+      res.redirect('/grupos/UM');
     })
     .catch(erro => res.status(500).render('error', {error : erro}) )
   });

@@ -2,7 +2,8 @@ extends layoutAutenticado
 block content
     .w3-container(style="display: flex;")
         .w3-container(style='width:40%;')
-            button.button01(onclick="goBack()") Voltar
+            if(grupo._id != "UM")
+                button.button01(onclick="goBack()") Voltar
             if grupos.length > 0
                 h4
                     b SubGrupos
