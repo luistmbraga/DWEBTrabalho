@@ -21,3 +21,12 @@ block content
             text com o intuito de facilitar a inserção de documentos relativos às várias cadeiras lecionadas ao longo dos anos dos vários cursos,
             text bem como a procura e obtenção desses mesmos documentos. Além disso, os utilizadores têm direito a um chat, de
             text  maneira a viabilizar a comunicação entre os estudantes.
+
+            style.
+            
+            script.
+                var grupos = !{JSON.stringify(grupos)}
+                $(document).ready(function() {
+                  console.log("WTF")
+                $('.js-example-basic-single').select2();
+                 });

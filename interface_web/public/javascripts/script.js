@@ -45,7 +45,6 @@ $(document).ready(function(){
 			 console.log(users)
 	 if(user.id_conversa == undefined){
 		console.log("CRIOU CONVERSA")
-		console.log()
 		createConversa(user._id,id_user)
 			.then((conversa) => user.id_conversa = conversa._id )
 	 }
@@ -178,7 +177,6 @@ function refreshConversas(){
 				for(j in users){
 					if(conversas[i].participantes[0] == users[j]._id || conversas[i].participantes[1] == users[j]._id){
 						users[j].id_conversa = conversas[i]._id;
-						console.log("LALALALALLALAA")
 						break;
 					}
 				}
@@ -199,7 +197,5 @@ function getUser(id){
 	//users.forEach(e => {console.log(e._id+" "+id);if(e._id == id) return e})
 	for(i in users)
 	if(users[i]._id == id) return users[i];
-	console.log("FUDEU user: "+ id)
-	console.log(users)
 }
 

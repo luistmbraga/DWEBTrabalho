@@ -4,8 +4,7 @@ var Schema = mongoose.Schema
 
 var GrupoSchema = new Schema({
     _id: {type: String, required: true},
-    curso: {type: String, required: true},
-    ano: Number,
+    curso:  String,
     gruposFilhos: [String],
     desc_dependencia: Boolean 
   });

@@ -8,15 +8,15 @@ block content
                 each grupo in grupos
                     .w3-container(style='border-width:2px; background-color:white; border-style:double; border-color:#990000;')
                         form(method='GET' action='/grupos/'+ grupo)
-                            button(style='width:100%;' type='submit')= grupo 
+                            button.button01(style='width:100%;' type='submit')= grupo 
                     
         .w3-container(style="width: 300%;")
             center
                 h2
-                    font(size= '20')= 'Curso ' + grupo
+                    font(size= '20')= 'Curso ' + grupo._id
                 hr(style="border-color: #990000;")
                 .w3-container(style = 'width:40%;')
-                    form( method='POST' action='/publicacao/'+grupo enctype='multipart/form-data')
+                    form( method='POST' action='/publicacao/'+grupo._id enctype='multipart/form-data')
                         textarea(id = "conteudo" style='width:100%; resize:none;' name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5')
                         input.w3-input.w3-border.w3-light-grey(id= 'ficheiros' type='file' name='ficheiros' onchange="Filevalidation()" multiple)
                         button.button01(type="submit" name="submit") Publicar
@@ -44,5 +44,7 @@ block content
                             p
         .w3-container(style="flex-grow: 1;")    
             include chat
-                            
-                
+
+
+                        
+            

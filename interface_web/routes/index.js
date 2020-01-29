@@ -58,7 +58,14 @@ router.get('/', function(req, res, next) {
   }
   else
       aux = "login"
-  res.render('index',{login:aux});
+    axios.get(apiGrupos+"tiposCursos?token="+getToken())
+      .then(dados =>{
+        console.log("MUAHAH")
+        console.log(dados.data)
+        res.render('index',{login:aux,grupos:dados.data});
+      })
+      .catch(erro => res.status(500).render('error', {error : erro}) )
+
 });
 
 
@@ -121,7 +128,7 @@ router.get('/download/:idFicheiro/:fileName',function(req, res,next){
   var fileName = req.params.fileName
   axios({
     method: "get",
-    url: "http://localhost:3055/api/download/" + req.params.idFicheiro, //+"?token="+getUserAcessToken(req)
+    url: "http://localhost:3055/api/download/" + req.params.idFicheiro +"?token="+getUserAcessToken(req),
     responseType: "stream"
       }).then(function (response) {
         var stream = response.data.pipe(fs.createWriteStream(downloadPath + fileName))      
@@ -159,6 +166,8 @@ router.post('/ficheiros/:idContainer',verificaAutenticacao, function(req, res, n
 })
 
 
+/*
+
 router.get('/grupos/:grupo', verificaAutenticacao,function(req, res, next){
   // depois ir à sessão
   var grupo = req.params.grupo
@@ -182,6 +191,31 @@ router.get('/grupos/:grupo', verificaAutenticacao,function(req, res, next){
         })
        .catch(erro => res.status(500).render('error', {error : erro}) )
 })
+*/
+
+router.get('/grupos/:grupo', verificaAutenticacao,function(req, res, next){
+
+  var grupoID = req.params.grupo
+  axios.get(apiGrupos + grupoID+"?token="+getUserAcessToken(req))
+       .then(grupo => {
+         console.log("GRUPO:"+JSON.stringify(grupo.data))
+          if(!grupo.data) {res.render('error', {error: "Esse grupo não existe!"}) ; return  }
+          axios.get(apiPublicacoes + "grupos/" + grupoID+"?token="+getUserAcessToken(req))
+            .then(dados => {
+              axios.get(apiUsers+"?token="+getUserAcessToken(req))
+                  .then( (users) => {
+                      getFicheiros(dados.data,req)
+                            .then(publicacoes => {
+                              res.render('curso', {grupo: grupo.data, grupos : grupo.data.gruposFilhos, users:users.data, publicacoes:publicacoes, user:getUserID(req),nAcess:getUserAcess(req)})
+                            })
+                            .catch(erro => res.status(500).render('error', {error : erro}) )
+                  })
+                  .catch(erro => res.status(500).render('error', {error : erro}) )     
+            })
+            .catch(erro => res.status(500).render('error', {error : erro}) ) 
+        })
+       .catch(erro => res.status(500).render('error', {error : erro}) )
+})
 
 router.get('/feedNoticias', verificaAutenticacao,function(req, res, next){
   
@@ -191,7 +225,7 @@ router.get('/feedNoticias', verificaAutenticacao,function(req, res, next){
               .then( (users) => {
                 getFicheiros(dados.data,req)
                 .then(dados =>{
-                  res.render('feed', {lista : dados, users:users.data, user:getUserID(req)})
+                  res.render('feed', {lista : dados, users:users.data, user:getUserID(req),nAcess:getUserAcess(req)})
                 } )
                 .catch(erro => console.log(erro))
               })
@@ -214,7 +248,7 @@ router.get('/meuPerfil',verificaAutenticacao, function(req, res, next){
               .then( (user) => {
                 console.log(user.nome)
                             //res.render('feed', {lista : dados, users:users.data})
-            res.render('meuPerfil', {lista: dados, users: users.data, user:user.data})
+            res.render('meuPerfil', {lista: dados, users: users.data, user:user.data,nAcess:getUserAcess(req)})
               })
               .catch(erro => res.status(500).render('error', {error : erro}))
 
@@ -252,26 +286,55 @@ router.get('/meusgrupos/', verificaAutenticacao,function(req, res, nex){
     .then(dados => {
       axios.get(apiUsers+"?token="+getUserAcessToken(req))
         .then( (users) => {
-        res.render('meusgrupos', {users: users.data,user: dados.data})
+        res.render('meusgrupos', {users: users.data,user: dados.data,nAcess:getUserAcess(req)})
     })
     .catch(erro => res.status(500).render('error', {error : erro}) )
   })
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+router.get('/eventos/', verificaAutenticacao,function(req, res, nex){
+  axios.get(apiGrupos +"eventos?token="+getUserAcessToken(req))
+    .then(eventos => {
+      axios.get(apiUsers+"?token="+getUserAcessToken(req))
+        .then( (users) => {
+          getUser(getUserID(req))
+          .then(dados =>{
+            eventos.data = eventos.data.filter( function( el ) {
+              return !dados.grupos.includes( el._id );
+            } );
+            res.render('eventos', {grupos: eventos.data,users: users.data, user: getUserID(req),nAcess:getUserAcess(req)})
+          })
+          .catch(erro => res.status(500).render('error', {error : erro}) )
+    })
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+  })
+    .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+router.get('/addGrupo/', verificaAutenticacao,function(req, res, nex){
+      axios.get(apiUsers+"?token="+getUserAcessToken(req))
+        .then( (users) => {
+        res.render('addGrupo', {users: users.data, user: getUserID(req),nAcess:getUserAcess(req)})
+    })
     .catch(erro => res.status(500).render('error', {error : erro}) )
 })
 
 router.get('/grupos/', verificaAutenticacao,function(req, res, nex){
-  var userid = getUserID(req)
-  axios.get(apiGrupos +"?token="+getUserAcessToken(req))
-    .then(grupos => {
-      axios.get(apiUsers+"?token="+getUserAcessToken(req))
-        .then( (users) => {
-        res.render('grupos', {grupos: grupos.data,users: users.data, user: getUserID(req)})
-    })
-    .catch(erro => res.status(500).render('error', {error : erro}) )
-  })
-    .catch(erro => res.status(500).render('error', {error : erro}) )
+  axios.get(apiUsers+"?token="+getUserAcessToken(req))
+    .then( (users) => {
+      axios.get(apiGrupos+"cursos"+"?token="+getUserAcessToken(req))
+        .then( (cursos) => {
+          axios.get(apiGrupos+"eventos"+"?token="+getUserAcessToken(req))
+          .then( (eventos) => {
+            res.render('grupos', {users: users.data, user: getUserID(req),cursos:cursos.data,eventos:eventos.data,nAcess:getUserAcess(req)})
+         })
+         .catch(erro => res.status(500).render('error', {error : erro}) )
+        })
+        .catch(erro => res.status(500).render('error', {error : erro}) )
 })
-
+.catch(erro => res.status(500).render('error', {error : erro}) )
+})
 
 
 router.post('/atualizaUtilizador', verificaAutenticacao,function(req, res, next){
@@ -337,7 +400,7 @@ router.get('/resendEmail/:id',function(req,res){
           " Enviamos-lhe este email para o notificar sobre o resgisto à nossa aplicação UMbook<br/>"+
           " Caso não se tenha registado na  nossa aplicação pedimos que ignore este email.<br/>" +
           " Para ativar a sua conta clique no link abaixo:<br/>" +
-          "<a href='http://localhost:1234/ativarConta/"+user._id+"?hash="+user.token+"'>Aceitar Pedido</a>"+
+          "<a href='http://localhost:1234/ativarConta/"+user._id+"?hash="+user.token+"'>Ativar Conta</a></br>"+
           "Se alguma duvida persistir nao hesite em contactar o nosso suporte em <a href=https://www.uminho.pt/PT>https://www.uminho.pt/PT</a>" +
           "<br/>Atenciosamente<br/>UmBook <br/>UMinho!<br/><br/><img src='http://join.di.uminho.pt/images/org/ee-um.png' alt='https://www.uminho.pt/PT' style='width:400px;height:200px;'></html>"
         };
@@ -357,6 +420,17 @@ router.get('/resendEmail/:id',function(req,res){
     } )
     .catch(erro => res.status(500).render('error', {error : erro}) )
 
+})
+
+router.post('/grupos',function(req, res, next){
+  var grupo = req.body
+  console.log(grupo)
+  axios.post(apiGrupos+"?token="+getToken(20), grupo)
+       .then( (dados) =>{
+
+        res.redirect('/grupos')
+       } )
+       .catch(erro => {console.log(erro);res.status(500).render('error', {error : erro})} )
 })
 
 router.post('/utilizador',function(req, res, next){
@@ -383,7 +457,7 @@ router.post('/utilizador',function(req, res, next){
                 " Enviamos-lhe este email para o notificar sobre o resgisto à nossa aplicação UMbook<br/>"+
                 " Caso não se tenha registado na  nossa aplicação pedimos que ignore este email.<br/>" +
                 " Para ativar a sua conta clique no link abaixo:<br/>" +
-                "<a href='http://localhost:1234/ativarConta/"+user._id+"?hash="+user.token+"'>Aceitar Pedido</a>"+
+                "<a href='http://localhost:1234/ativarConta/"+user._id+"?hash="+user.token+"'>Ativar Conta</a></br>"+
                 "Se alguma duvida persistir nao hesite em contactar o nosso suporte em <a href=https://www.uminho.pt/PT>https://www.uminho.pt/PT</a>" +
                 "<br/>Atenciosamente<br/>UmBook <br/>UMinho!<br/><br/><img src='http://join.di.uminho.pt/images/org/ee-um.png' alt='https://www.uminho.pt/PT' style='width:400px;height:200px;'></html>"
               };
@@ -448,11 +522,11 @@ function limpaUpload(files){
   })
 }
 
-function post_ficheiro(files, idContainer, emailUser){
+function post_ficheiro(files, idContainer, emailUser,req){
   return new Promise(function(resolve, reject){
     var ficheiros = files
 
-    form_data_files(ficheiros, idContainer, emailUser)
+    form_data_files(ficheiros+"?token="+getUserAcessToken(req), idContainer, emailUser)
           .then(form_data => {
             const request_config = {
               headers: {
@@ -491,7 +565,7 @@ router.post('/publicacao/:grupo',verificaAutenticacao, upload.array('ficheiros')
           if(files.length > 0){
             idPublicacao = publicacao.data._id
             
-            post_ficheiro(files, idPublicacao, user._id)
+            post_ficheiro(files, idPublicacao, user._id,req)
               .then(() => res.redirect('/grupos/' + req.params.grupo))
   
            }
@@ -566,11 +640,82 @@ router.get('/pedirAcesso/:idgrupo', verificaAutenticacao,function(req, res, next
             console.log(error);
           } else {
             console.log('Email sent: ' + info.response);
+            res.redirect("/eventos")
           }
         });
 
   })
   .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
+
+function form_data_file(file){
+  return new Promise(function(resolve, reject){
+    let form_data = new FormData();
+      form_data.append('json', fs.createReadStream(file.path), file.originalname)
+      resolve(form_data)
+  })
+}
+
+router.delete('/drop', function(req, res, next){
+  axios.delete("http://localhost:3056/api/dbManager/drop")
+       .then(dados => {
+         res.jsonp(dados.data)
+       })
+       .catch(erro => {
+         console.log(erro)
+       })
+})
+
+// o input do file tem que se chamar json ou altera este nome
+router.post('/importData', upload.single('json'), function(req, res, next){  
+  form_data_file(req.file)
+          .then(form_data => {
+    
+            const request_config = {
+              headers: {
+                ...form_data.getHeaders()
+              }
+            };
+
+            axios.post("http://localhost:3056/api/dbManager/import", form_data, request_config)  
+                  .then(dados => {
+                    console.log(dados.data)
+                    res.jsonp(dados.data)
+                  })
+                  .catch(erro => res.jsonp(erro.response.data.message))
+                  .finally(()=> {
+                    ficheiros = []
+                    ficheiros.push(req.file)
+                    limpaUpload(ficheiros)
+                  })
+          
+          })
+          .catch(erro => console.log(erro))
+})
+
+
+router.get('/exportData', function(req, res, next){
+  var fileName = 'UMbook.json'
+  axios({
+    method: "get",
+    url: "http://localhost:3056/api/dbManager/export",
+    responseType: "stream"
+      }).then(function (response) {
+        var stream = response.data.pipe(fs.createWriteStream(downloadPath + fileName))      
+          stream.on('finish', function(){
+            res.download(downloadPath + fileName, function(erro){
+              if(!erro){
+                fs.unlinkSync(downloadPath + fileName, (err)=>{
+                  if(err) {
+                    console.log(err)
+                  }
+                  res.redirect('/feedNoticias')
+                })
+              }
+             })
+          })                  
+  });
 })
 
 
@@ -586,9 +731,6 @@ router.get('/auth/facebook/callback',
         console.log("User: " +JSON.stringify(dados.data))
     if(dados.data.curso == null)
       res.render('registaFacebook');
-    else if(dados.data.nAcess == -1){
-      res.render('/contaInativa',{user:dados.data});
-    }
     else
       res.redirect('/feedNoticias');
     })

@@ -65,6 +65,23 @@ Grupos.remove= (id) =>{
     return Grupo.deleteOne({_id:id})
 }
 
+Grupos.getTipoCursos= () =>{
+    return Grupo
+        .distinct("curso",{desc_dependencia:true})
+        .exec()
+}
+
+Grupos.getEventos = () =>{
+    return Grupo
+        .find({"curso": {$exists:false}})
+        .exec()
+}
+
+Grupos.getCursos = () =>{
+    return Grupo
+        .find({ "$expr": { "$eq": [ "$_id" , "$curso" ] } })
+        .exec()
+}
 
 
 

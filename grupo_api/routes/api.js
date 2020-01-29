@@ -17,6 +17,25 @@ function checkPermissao(acess){
   }
 }
 
+
+router.get('/tiposCursos', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res, next) {
+  Grupos.getTipoCursos()
+  .then(dados => {console.log("dados: "+dados);res.jsonp(dados)})
+  .catch(erro => res.status(500).jsonp(erro))
+});
+
+router.get('/cursos', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res, next) {
+  Grupos.getCursos()
+  .then(dados => {console.log("dados: "+dados);res.jsonp(dados)})
+  .catch(erro => res.status(500).jsonp(erro))
+});
+
+router.get('/eventos', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res, next) {
+  Grupos.getEventos()
+  .then(dados => {console.log("dados: "+JSON.stringify(dados));res.jsonp(dados)})
+  .catch(erro => res.status(500).jsonp(erro))
+});
+
 /* GET home page. */
 router.get('/:id', passport.authenticate('jwt', {session: false}),checkPermissao(0),function(req, res, next) {
     Grupos.consultar(req.params.id)
@@ -41,6 +60,7 @@ router.get('/subgrupos/:id', passport.authenticate('jwt', {session: false}),chec
 });
 
 router.post('/', passport.authenticate('jwt', {session: false}),checkPermissao(1),function(req, res, next) {
+  console.log(req.body)
   Grupos.insert(req.body)
   .then(()=> res.jsonp({result:"Grupo inserido com sucesso!"}))
   .catch(erro => res.status(500).jsonp(erro))
@@ -58,6 +78,8 @@ router.delete('/:id', passport.authenticate('jwt', {session: false}),checkPermis
   .catch(erro => res.status(500).jsonp(erro))
 
 });
+
+
 
 
 module.exports = router;

@@ -1,9 +1,16 @@
 
 var host = 'http://localhost:1234/'
 
+
+
+
+
+//var 
+
 function showRegisto(){
     var registo = 
     '<div class="w3-container">' +
+    '<h3> Registar Utilizador </h3>'+  
     ' <form method="POST" action="/utilizador"><input class="w3-input w3-border" type="text" name="_id"' + 
     ' placeholder="Email" required="required" /><input class="w3-input w3-border" type="password" name="pass" placeholder="Password"'+
     ' required="required" /><input class="w3-input w3-border"' +
@@ -12,12 +19,27 @@ function showRegisto(){
     ' /><input class="w3-input w3-border" type="text" name="nome" placeholder="Nome" ' + 
     ' required="required" /><input class="w3-input w3-border" type="text" name="sexo" placeholder="Sexo" /> ' + 
     '<input class="w3-input w3-border" type="number" name="numTelemovel" placeholder="Número de telemóvel" ' +
-        '/><input class="w3-input w3-border" type="text" name="curso" placeholder="Curso" /> ' + 
+        '/>'+
+        '<select id ="mySelect2" style="width:100%" class="js-example-basic-single" name="state">'+
+      '</select>'+
+      '<input class="w3-input w3-border"  id="inputgrupo" type="hidden" name="curso"/>'+
         '<button class="w3-hover-green" type="submit" style="background-color: DodgerBlue; color: white; width:100%; padding:15px; ' + 
         'font-size:20px; border-radius: 12px;">Registar</button></form> </div>'
 
     $('#display').empty()
     $('#display').append(registo)
+    for(i in grupos)
+        $('#mySelect2').append('<option value="'+grupos[i]+'">'+grupos[i]+'</option>');
+
+    $("js-example-basic-single").select2(); 
+    $('#mySelect2').select2({
+        dropdownParent: $('#display')
+    });
+    $('#mySelect2').on('select2:select', function (e) {
+        console.log($('#mySelect2').find(':selected').val())
+        $('#inputgrupo').val($('#mySelect2').find(':selected').val())
+      });
+
     $('#display').modal()
 }
 
@@ -35,6 +57,51 @@ function showRegistoFacebook(){
         'font-size:20px; border-radius: 12px;">Avançar</button></form> </div>'
 
     $('#teste').append(registo)
+}
+
+function addTableRow(table){
+    $('#'+table).append("<tr><td><input class ='w3-input w3-border w3-light-grey' type='text' placeholder='Grupo Filho'>"+
+                        "<td><button class='button01' type='' style='width:50%' onclick='removeTableRow(this,\""+table+"\")'>Remover</button></td>"+
+                       "</tr>")
+}
+
+function removeTableRow(elem,table){
+    var index = $(elem).closest('td').parent()[0].sectionRowIndex;
+	if (index > -1) {
+        console.log(table)
+        document.getElementById(table).deleteRow(index);
+	}
+}
+
+
+function getTableInputValues(table){
+    var values = [];
+    console.log(table)
+    $('#'+table+' tr').each(function() {
+        console.log("FFF")
+        values.push($(this).find("input").val())
+    });
+    return values;
+}
+function createGroup(){
+    var grupo = {};
+    grupo._id = $('#_id').val()
+    if($('#curso').val()!="")
+    grupo.curso = $('#curso').val()
+    if($('#checkbox').is(':checked')){
+        grupo.desc_dependencia = 1
+        grupo.gruposFilhos = getTableInputValues('table')
+    }
+    else{
+        grupo.desc_dependencia = 0
+        grupo.gruposFilhos = []
+    }
+
+    console.log("Vou tentar criar o Grupo:")
+    console.log(grupo)
+    axios.post("http://localhost:1234/grupos",grupo)
+        .then(response => window.location.assign('/grupos'))
+        .catch(error => console.log(error))
 }
 
 

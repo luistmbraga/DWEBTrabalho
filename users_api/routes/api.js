@@ -45,11 +45,10 @@ router.get('/', passport.authenticate('jwt', {session: false}),checkPermissao(0)
   
   router.post('/', function(req, res){ //passport.authenticate('jwt', {session: false})
     req.body.nAcess = -1;
-    console.log("yey")
     var token = crypto.randomBytes(16).toString('hex');
-    console.log("wow")
-    console.log("token")
     req.body.token = token;
+    req.body.grupos = []
+    req.body.grupos.push(req.body.curso)
     
     Users.inserirUser(req.body)
     .then(dados => res.jsonp(dados))
