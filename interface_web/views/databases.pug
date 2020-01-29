@@ -1,0 +1,25 @@
+extends layoutAutenticado
+block content
+    .w3-container(style="display: flex;")
+        .w3-container(style='width:50%;')
+                center
+                    h2
+                        b Databases
+                    h4 
+                        b Exportar
+                    label Clique no botão para Exportar os dados da base de dados para um ficheiro Json!
+                    button.button01(onclick="location.href='/exportdata'") Exportar Dados 
+                    hr
+ 
+                    h4
+                         b Importar
+                    form( method='POST' action='/importdata' enctype='multipart/form-data')
+                        label Para importar dados para a base de dados, insira o ficheiro em formato Json!
+                        input.w3-input.w3-border.w3-light-grey(id= 'json' type='file' name='json')
+                        button.button01(type="submit" name="submit") Importar
+                    hr
+                    
+
+                                
+        .w3-container(style="flex-grow: 1;")    
+            include chat

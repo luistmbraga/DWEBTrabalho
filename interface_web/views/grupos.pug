@@ -7,29 +7,33 @@ block content
                     b Lista de Cursos
             if cursos.length > 0
                 center
-                    table 
-                        each g in cursos
+                    .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                        center
+                            table
+                                each g in cursos
                                     tr
                                         td
                                             font(size="4") 
-                                                label 
-                                                    b=g._id
+                                                label=g._id
                                         td(style ="padding-left:50px;padding-bottom:10px")
                                             button.button01(onclick="location.href='/grupos/"+g._id+"'") Consultar
+            hr
             center
                 h4
                     b Lista de Eventos
             if eventos.length > 0
                 center
-                    table 
-                        each e in eventos
+                    .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                        table 
+                            each e in eventos
                                     tr
                                         td
                                             font(size="4") 
-                                                label 
-                                                    b=e._id
+                                                label=e._id
                                         td(style ="padding-left:50px;padding-bottom:10px")
                                             button.button01(onclick="location.href='/grupos/"+e._id+"'") Consultar
+                    hr
+                                            
                                 
         .w3-container(style="flex-grow: 1;")    
             include chat

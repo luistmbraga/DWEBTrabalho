@@ -49,7 +49,6 @@ router.get('/', passport.authenticate('jwt', {session: false}),checkPermissao(0)
 router.post('/', passport.authenticate('jwt', {session: false}),checkPermissao(0), function(req, res, next) {
   var newPublicacao = req.body
   newPublicacao.data = new Date() 
-  req.body.tags = req.body.conteudo.match(/#[a-z0-9_]+/g)
   Publicacoes.insert(req.body)
   .then(dados => res.jsonp(dados))
   .catch(erro => res.status(500).jsonp(erro))

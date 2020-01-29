@@ -1,0 +1,375 @@
+{
+     "users": [
+          {
+               "_id": "admin",
+               "grupos": [
+                    "MIEI"
+               ],
+               "pass": "$2a$10$k50zkom.kHv70W.gSYtR3OWJjugkrmbahmD2W/KWOy5CXmFv8hXAK",
+               "dataNasc": "2020-01-24",
+               "numAluno": "432423",
+               "nome": "Admin",
+               "sexo": "Masculino",
+               "numTelemovel": 4324234,
+               "curso": "MIEI",
+               "nAcess": 10,
+               "token": "c34e0f61d0caf0188692e8d9aaefca90",
+               "__v": 0
+          }
+     ],
+     "grupos": [
+          {
+               "_id": "MIEI-Primeiro Ano",
+               "gruposFilhos": [
+                    "Algebra Linear",
+                    "Cálculo",
+                    "TMD",
+                    "PF",
+                    "EES",
+                    "LI1",
+                    "SC",
+                    "Análise",
+                    "TFM",
+                    "Lógica",
+                    "PI",
+                    "LI2"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Algebra Linear",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Cálculo",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "TMD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "PF",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "EES",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI1",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Análise",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "TFM",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Lógica",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI2",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "PI",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Segundo Ano",
+               "gruposFilhos": [
+                    "ISD",
+                    "EA",
+                    "EE",
+                    "AC",
+                    "CD",
+                    "Algoritmos e Complexidade",
+                    "SO",
+                    "POO",
+                    "Eletromagnetismo",
+                    "LI3",
+                    "CP"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "ISD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "EA",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "EE",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "AC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Algoritmos e Complexidade",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "POO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Eletromagnetismo",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI3",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CP",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Quinto Ano | MEI-Segundo Ano",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Terceiro Ano",
+               "gruposFilhos": [
+                    "BD",
+                    "DSS",
+                    "MDIO",
+                    "RC",
+                    "SD",
+                    "MNOL",
+                    "LI4",
+                    "SRCR",
+                    "MEIO",
+                    "CG",
+                    "CC",
+                    "PL"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "BD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "DSS",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MDIO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "RC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MNOL",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI4",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SRCR",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MEIO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CG",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "PL",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI",
+               "gruposFilhos": [
+                    "MIEI-Primeiro Ano",
+                    "MIEI-Segundo Ano",
+                    "MIEI-Terceiro Ano",
+                    "MIEI-Quarto Ano | MEI-Primeiro Ano",
+                    "MIEI-Quinto Ano | MEI-Segundo Ano"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "UM",
+               "gruposFilhos": [],
+               "curso": "UM",
+               "desc_dependencia": false,
+               "__v": 0
+          }
+     ],
+     "publicacoes": [
+          {
+               "_id": "5e30f422b1aced75d190be2f",
+               "tags": [],
+               "conteudo": "Bom dia.\r\nEste é o grupo principal deste Projecto.",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-29T02:55:30.724Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30f456b1aced75d190be30",
+               "tags": [],
+               "conteudo": "Neste grupo vamos apresentar  as várias funcionalidades do sistema de grupos que foi implementado!",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-29T02:56:22.717Z",
+               "__v": 0
+          },
+     ]
+}

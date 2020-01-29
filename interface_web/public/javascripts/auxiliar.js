@@ -52,11 +52,20 @@ function showRegistoFacebook(){
     ' /><input class="w3-input w3-border" type="text" name="numAluno" placeholder="Identificador (Número) de Estudante" required="required"' + 
     ' /><input class="w3-input w3-border" type="text" name="sexo" placeholder="Sexo" /> ' + 
     '<input class="w3-input w3-border" type="number" name="numTelemovel" placeholder="Número de telemóvel" ' +
-        '/><input class="w3-input w3-border" type="text" name="curso" placeholder="Curso" /> </hr>' + 
-        '<button class="w3-hover-red" type="submit" style="background-color: red; color: white; width:50%; padding:15px; ' + 
-        'font-size:20px; border-radius: 12px;">Avançar</button></form> </div>'
+        '/>'+
+        '<select id ="mySelect22" style="width:100%" class="js-example-basic-single" name="state">'+
+      '</select>'+'</hr>' + 
+      '<input class="w3-input w3-border"  id="inputgrupo" type="hidden" name="curso"/>'+
+        '<hr><button class="button01" type="submit" style=" width:50%;">Avançar</button></form> </div>'
+        console.log(grupos)
+        $('#teste').append(registo)
+    for(i in grupos)
+        $('#mySelect22').append('<option value="'+grupos[i]+'">'+grupos[i]+'</option>');
 
-    $('#teste').append(registo)
+    $('#mySelect22').on('select2:select', function (e) {
+        console.log($('#mySelect22').find(':selected').val())
+        $('#inputgrupo').val($('#mySelect22').find(':selected').val())
+      });
 }
 
 function addTableRow(table){

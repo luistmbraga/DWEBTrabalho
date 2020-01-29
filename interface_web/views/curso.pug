@@ -2,6 +2,7 @@ extends layoutAutenticado
 block content
     .w3-container(style="display: flex;")
         .w3-container(style='width:40%;')
+            button.button01(onclick="goBack()") Voltar
             if grupos.length > 0
                 h4
                     b SubGrupos
@@ -13,8 +14,10 @@ block content
         .w3-container(style="width: 300%;")
             center
                 h2
-                    font(size= '20')= 'Curso ' + grupo._id
+                    font(size= '20')= 'Grupo ' + grupo._id
                 hr(style="border-color: #990000;")
+                input(id="myInput" onkeyup="myFunction()" type="text" placeholder="Precurar por Tag...")
+                p
                 .w3-container(style = 'width:40%;')
                     form( method='POST' action='/publicacao/'+grupo._id enctype='multipart/form-data')
                         textarea(id = "conteudo" style='width:100%; resize:none;' name="conteudo" placeholder= "Escreva o que lhe vai na alma..." rows='5')
@@ -24,26 +27,63 @@ block content
                 if(publicacoes.length > 0)
                     hr(style='color:#990000' )
                     b Publicacoes
-                    each pub in publicacoes
-                        center
-                            .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
-                                .w3-container(style = 'float: left;')
-                                    b= pub.nomeUser
-                                .w3-container(style = 'float: right;')
-                                    b= pub.dataFormatada
-                                hr(style="border-color: #990000;")
-                                center
-                                    text= pub.conteudo
-                                if (pub.files.length > 0)
-                                    hr(style="border-color: #990000;")
-                                    b Ficheiros Publicados
-                                    each f in pub.files
-                                        ul
-                                            li
-                                                a(href='../download/' + f._id +"/" + f.name)= f.name
-                            p
+                    center
+                        table( style="padding-left:31%;width:130%" id="myTable")
+                            each pub in publicacoes
+                           
+                                tr
+                                    td
+                                        .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                                            .w3-container(style = 'float: left;')
+                                                b= pub.nomeUser
+                                            .w3-container(style = 'float: right;')
+                                                b= pub.dataFormatada
+                                            hr(style="border-color: #990000;")
+                                            center
+                                                text= pub.conteudo
+                                            if (pub.files.length > 0)
+                                                hr(style="border-color: #990000;")
+                                                b Ficheiros Publicados
+                                                each f in pub.files
+                                                    ul
+                                                        li
+                                                            a(href='../download/' + f._id +"/" + f.name)= f.name
+                                            if(pub.tags.length > 0)
+                                                hr(style="border-color: #990000;")
+                                                b(name="ti") Tags: #{pub.tags}
+                                            else 
+                                                b(name="ti" hidden) ff
+                                                
+                            
         .w3-container(style="flex-grow: 1;")    
             include chat
+        script.
+            function goBack() {
+                window.history.back();
+            }
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                ti = document.getElementsByName("ti");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    if (ti) {
+                    txtValue = ti[i].textContent || ti[i].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                    }
+                    else
+                    cosole.log("WOW")
+                }
+                }
 
 
                         

@@ -32,14 +32,14 @@ html
                 a(href='/grupos/UM' style='padding-left:10px;') Feed
                 a(href='/meuPerfil/') Meu Perfil
                 a(href='/grupos/MIEI') Grupo de Curso
-                a(href='/meusgrupos') Meus Grupos
+                a(href='/meusgrupos') Meus Eventos
                 a(href='/eventos') Eventos
                 if(nAcess > 5)
                     a(href='/addGrupo') Novo Grupo
                     a(href='/grupos') Grupos
                 a(href="/logout" style='float:right;') Terminar Sessão
                 if(nAcess > 5)
-                    a(href='/database' style='float:right;') Database
+                    a(href="/databases" style='float:right;') Database
             block content    
         footer.w3-container(style="background-color: #990000;")
             address 

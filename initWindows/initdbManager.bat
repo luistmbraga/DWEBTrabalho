@@ -1,2 +1,2 @@
 cd ../dbManager/
-npm starts
+npm start

@@ -1,0 +1,640 @@
+{
+     "mensagens": [
+          {
+               "_id": "5e31044248b8f66349220880",
+               "idConversa": "5e31043eb8637c7c3d1a1af8",
+               "texto": "ola",
+               "from": "filipe-cunha1@hotmail.com",
+               "dataEnvio": "2020-01-29T04:04:18.032Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e31044a48b8f66349220881",
+               "idConversa": "5e31043eb8637c7c3d1a1af8",
+               "texto": "boa tarde",
+               "from": "admin",
+               "dataEnvio": "2020-01-29T04:04:26.048Z",
+               "__v": 0
+          }
+     ],
+     "publicacoes": [
+          {
+               "_id": "5e30f422b1aced75d190be2f",
+               "tags": [],
+               "conteudo": "Bom dia.\r\nEste é o grupo principal deste Projecto.",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-29T02:55:30.724Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30f456b1aced75d190be30",
+               "tags": [],
+               "conteudo": "Neste grupo vamos apresentar  as várias funcionalidades do sistema de grupos que foi implementado!",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-29T02:56:22.717Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fa1c5c843512753cd33a",
+               "tags": [],
+               "conteudo": "Por exemplo, Upload de ficheiros do utilizador para o sistema.\r\nEste ficheiro é enviado para a interface a qual é responsável por comunicar com o nosso gestor de ficheiros na API",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-29T03:21:00.554Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fa6a5c843512753cd33b",
+               "tags": [],
+               "conteudo": "Podemos enviar vários ficheiros em Simultâneo!!",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-29T03:22:18.902Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fa895c843512753cd33c",
+               "tags": [],
+               "conteudo": "Neste grupo temos todas as cadeiras de primeiro Ano!",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI-Primeiro Ano",
+               "data": "2020-01-29T03:22:49.398Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fae25c843512753cd33d",
+               "tags": [],
+               "conteudo": "Neste grupo partilham-se ficheiros sobre esta cadeira. \r\nPara além disso podem-se colocar avisos ou qualquer tipo de informaçao relevante a esta UC.",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "Algebra Linear",
+               "data": "2020-01-29T03:24:18.427Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30faeb5c843512753cd33e",
+               "tags": [],
+               "conteudo": "Neste grupo partilham-se ficheiros sobre esta cadeira. \r\nPara além disso podem-se colocar avisos ou qualquer tipo de informaçao relevante a esta UC.",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "Cálculo",
+               "data": "2020-01-29T03:24:27.691Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30faf25c843512753cd33f",
+               "tags": [],
+               "conteudo": "Neste grupo partilham-se ficheiros sobre esta cadeira. \r\nPara além disso podem-se colocar avisos ou qualquer tipo de informaçao relevante a esta UC.",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "TMD",
+               "data": "2020-01-29T03:24:34.933Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fb085c843512753cd340",
+               "tags": [],
+               "conteudo": "Segudo Ano de MIEI",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI-Segundo Ano",
+               "data": "2020-01-29T03:24:56.151Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e31036c5c843512753cd341",
+               "tags": [],
+               "conteudo": "Neste Evento são disponibilizadas informações sobre o grupo de desporto do CESIUM",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "Concurso de Desporto do CESIUM",
+               "data": "2020-01-29T04:00:44.771Z",
+               "__v": 0
+          }
+     ],
+     "ficheiros": [
+          {
+               "_id": "5e30fa1cb0065157a9c9b6d4",
+               "size": "1655",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/6c8568de/8c87e249/1d497301/f2061ebb/index.pug",
+               "name": "index.pug",
+               "id_container": "5e30fa1c5c843512753cd33a",
+               "emailUser": "admin",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fa6bb0065157a9c9b6d5",
+               "size": "1655",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/6c8568de/8c87e249/1d497301/f2061ebb/index.pug",
+               "name": "index.pug",
+               "id_container": "5e30fa6a5c843512753cd33b",
+               "emailUser": "admin",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fa6bb0065157a9c9b6d6",
+               "size": "920",
+               "type": "application/x-sql",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/b30bdf72/169daab0/03b3ba11/2003ee82/sys.orcl.sql",
+               "name": "sys.orcl.sql",
+               "id_container": "5e30fa6a5c843512753cd33b",
+               "emailUser": "admin",
+               "__v": 0
+          },
+          {
+               "_id": "5e30fa6bb0065157a9c9b6d7",
+               "size": "922865",
+               "type": "application/pdf",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/677aee89/fa1bee4e/ad25c097/c90e45df/Relatorio.pdf",
+               "name": "Relatorio.pdf",
+               "id_container": "5e30fa6a5c843512753cd33b",
+               "emailUser": "admin",
+               "__v": 0
+          }
+     ],
+     "conversas": [
+          {
+               "_id": "5e31043eb8637c7c3d1a1af8",
+               "participantes": [
+                    "admin",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          }
+     ],
+     "users": [
+          {
+               "_id": "admin",
+               "grupos": [
+                    "MIEI"
+               ],
+               "pass": "$2a$10$k50zkom.kHv70W.gSYtR3OWJjugkrmbahmD2W/KWOy5CXmFv8hXAK",
+               "dataNasc": "2020-01-24",
+               "numAluno": "432423",
+               "nome": "Admin",
+               "sexo": "Masculino",
+               "numTelemovel": 4324234,
+               "curso": "MIEI",
+               "nAcess": 10,
+               "token": "c34e0f61d0caf0188692e8d9aaefca90",
+               "__v": 0
+          },
+          {
+               "_id": "filipe-cunha1@hotmail.com",
+               "grupos": [
+               ],
+               "nome": "Filipe Cunha",
+               "nAcess": 0,
+               "token": "be84486950ae8ae82ada7a9acde2daa7",
+               "__v": 0,
+               "dataNasc": "2020-01-09",
+               "numAluno": "843443",
+               "numTelemovel": 948343433,
+               "sexo": "Masculino",
+          }
+     ],
+     "grupos": [
+          {
+               "_id": "MIEI-Primeiro Ano",
+               "gruposFilhos": [
+                    "Algebra Linear",
+                    "Cálculo",
+                    "TMD",
+                    "PF",
+                    "EES",
+                    "LI1",
+                    "SC",
+                    "Análise",
+                    "TFM",
+                    "Lógica",
+                    "PI",
+                    "LI2"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Algebra Linear",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Cálculo",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "TMD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "PF",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "EES",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI1",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Análise",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "TFM",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Lógica",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI2",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "PI",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Segundo Ano",
+               "gruposFilhos": [
+                    "ISD",
+                    "EA",
+                    "EE",
+                    "AC",
+                    "CD",
+                    "Algoritmos e Complexidade",
+                    "SO",
+                    "POO",
+                    "Eletromagnetismo",
+                    "LI3",
+                    "CP"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "ISD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "EA",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "EE",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "AC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Algoritmos e Complexidade",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "POO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Eletromagnetismo",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI3",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CP",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Quinto Ano | MEI-Segundo Ano",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Terceiro Ano",
+               "gruposFilhos": [
+                    "BD",
+                    "DSS",
+                    "MDIO",
+                    "RC",
+                    "SD",
+                    "MNOL",
+                    "LI4",
+                    "SRCR",
+                    "MEIO",
+                    "CG",
+                    "CC",
+                    "PL"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "BD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "DSS",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MDIO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "RC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SD",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MNOL",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "LI4",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "SRCR",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MEIO",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CG",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "CC",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "PL",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI",
+               "gruposFilhos": [
+                    "MIEI-Primeiro Ano",
+                    "MIEI-Segundo Ano",
+                    "MIEI-Terceiro Ano",
+                    "MIEI-Quarto Ano | MEI-Primeiro Ano",
+                    "MIEI-Quinto Ano | MEI-Segundo Ano"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "MIEGSI",
+               "gruposFilhos": [],
+               "curso": "MIEGSI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Medicina",
+               "gruposFilhos": [],
+               "curso": "Medicina",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Direito",
+               "gruposFilhos": [],
+               "curso": "Direito",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "LCC",
+               "gruposFilhos": [],
+               "curso": "Direito",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Enfermagem",
+               "gruposFilhos": [],
+               "curso": "Enfermagem",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Educação Básica",
+               "gruposFilhos": [],
+               "curso": "Educação Básica",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Engenharia Fisica",
+               "gruposFilhos": [],
+               "curso": "Educação Básica",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Concurso de Desporto do CESIUM",
+               "gruposFilhos": [
+                    "Ciclismo",
+                    "Natação",
+                    "Canoagem",
+                    "Corridas"
+               ],
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "Ciclismo",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Natação",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Canoagem",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Corridas",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Casting de beleza MIEI",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Jornadas de Programação",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "Ambiente é um dever de todos!",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "UM",
+               "gruposFilhos": [],
+               "curso": "UM",
+               "desc_dependencia": false,
+               "__v": 0
+          }
+     ]
+}

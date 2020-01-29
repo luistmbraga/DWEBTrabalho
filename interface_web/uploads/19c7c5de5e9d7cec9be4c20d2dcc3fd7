@@ -1,0 +1,636 @@
+{
+     "mensagens": [
+          {
+               "_id": "5e2f3ce15a6869d944e5de94",
+               "idConversa": "5e2f3cd3824a331541b86fc8",
+               "texto": "Tudo porreito Admin?",
+               "from": "filipe-cunha1@hotmail.com",
+               "dataEnvio": "2020-01-27T19:41:21.189Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f652643bda42745ebbd49",
+               "idConversa": "5e2f3cd3824a331541b86fc8",
+               "texto": "ta tudo Flipe",
+               "from": "admin",
+               "dataEnvio": "2020-01-27T22:33:10.281Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30293af796922479fcb3cc",
+               "idConversa": "5e3026d06cb8384dc9113df5",
+               "texto": "ta tudo?",
+               "from": "teste22",
+               "dataEnvio": "2020-01-28T12:29:46.825Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e30651117ed7ee288c9b0d4",
+               "idConversa": "5e30650d54c9221119996b36",
+               "texto": "Tudo fiche admin?",
+               "from": "teste43",
+               "dataEnvio": "2020-01-28T16:45:05.035Z",
+               "__v": 0
+          }
+     ],
+     "publicacoes": [
+          {
+               "_id": "5e2f5a631a07ce02cd622f18",
+               "tags": [],
+               "conteudo": "ola",
+               "emailUser": "filipe-cunha1@hotmail.com",
+               "nomeUser": "Filipe Cunha",
+               "grupo": "UM",
+               "data": "2020-01-27T21:47:15.595Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f5adb5d8da3ecac34dbac",
+               "tags": [],
+               "conteudo": "dasdasda",
+               "emailUser": "teste0",
+               "nomeUser": "4324324",
+               "grupo": "UM",
+               "data": "2020-01-27T21:49:15.016Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f654c292469eda80a2852",
+               "tags": [],
+               "conteudo": "ole",
+               "emailUser": "admin",
+               "nomeUser": "Admin",
+               "grupo": "MIEI",
+               "data": "2020-01-27T22:33:48.107Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f6662292469eda80a2854",
+               "tags": [],
+               "conteudo": "fdsfdsf",
+               "emailUser": "teste0",
+               "nomeUser": "4324324",
+               "grupo": "UM",
+               "data": "2020-01-27T22:38:26.169Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f66e8292469eda80a2855",
+               "tags": [],
+               "conteudo": "dasrewrwerew",
+               "emailUser": "teste0",
+               "nomeUser": "4324324",
+               "grupo": "UM",
+               "data": "2020-01-27T22:40:40.960Z",
+               "__v": 0
+          },
+          {
+               "_id": "5e301c29f46a574dc5428f1d",
+               "tags": [],
+               "conteudo": "O teste é nas 24",
+               "emailUser": "teste0",
+               "nomeUser": "4324324",
+               "grupo": "MIEI-Primeiro Ano",
+               "data": "2020-01-28T11:34:01.618Z",
+               "__v": 0
+          }
+     ],
+     "ficheiros": [
+          {
+               "_id": "5e2f5adb59564a1f216e014a",
+               "size": "13",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/acd06b18/086a0dd2/ae699b1e/0b775be8/.gitignore",
+               "name": ".gitignore",
+               "id_container": "5e2f5adb5d8da3ecac34dbac",
+               "emailUser": "teste0",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f654c3549f449d1ee40ca",
+               "size": "1655",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/6c8568de/8c87e249/1d497301/f2061ebb/index.pug",
+               "name": "index.pug",
+               "id_container": "5e2f654c292469eda80a2852",
+               "emailUser": "admin",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f65693549f449d1ee40cb",
+               "size": "1655",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/6c8568de/8c87e249/1d497301/f2061ebb/index.pug",
+               "name": "index.pug",
+               "id_container": "5e2f6569292469eda80a2853",
+               "emailUser": "admin",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f66623549f449d1ee40cc",
+               "size": "1655",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/6c8568de/8c87e249/1d497301/f2061ebb/index.pug",
+               "name": "index.pug",
+               "id_container": "5e2f6662292469eda80a2854",
+               "emailUser": "teste0",
+               "__v": 0
+          },
+          {
+               "_id": "5e2f66e83549f449d1ee40cd",
+               "size": "1655",
+               "type": "application/octet-stream",
+               "path": "C:\\Users\\Filip\\Documents\\UM\\DAW\\merge2\\DWEBTrabalho\\ficheiros_api\\routes/../public/ficheiros/6c8568de/8c87e249/1d497301/f2061ebb/index.pug",
+               "name": "index.pug",
+               "id_container": "5e2f66e8292469eda80a2855",
+               "emailUser": "teste0",
+               "__v": 0
+          }
+     ],
+     "grupos": [
+          {
+               "_id": "PL3",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "PL4",
+               "gruposFilhos": [],
+               "curso": "MIEI",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "PL7",
+               "gruposFilhos": [],
+               "curso": "MIEIA",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "MIEI-Quarto Ano | MEI-Primeiro Ano",
+               "curso": "MIEI",
+               "gruposFilhos": [],
+               "ano": 4,
+               "desc_dependencia": false
+          },
+          {
+               "_id": "MIEI-Primeiro Ano",
+               "curso": "MIEI",
+               "gruposFilhos": [
+                    "Algebra Linear",
+                    "Cálculo",
+                    "TMD",
+                    "PF",
+                    "EES",
+                    "LI1",
+                    "SC",
+                    "Análise",
+                    "TFM",
+                    "Lógica",
+                    "PI",
+                    "LI2"
+               ],
+               "ano": 1,
+               "desc_dependencia": false
+          },
+          {
+               "_id": "MIEI-Segundo Ano",
+               "curso": "MIEI",
+               "gruposFilhos": [
+                    "ISD",
+                    "EA",
+                    "EE",
+                    "AC",
+                    "CD",
+                    "Algoritmos e Complexidade",
+                    "SO",
+                    "POO",
+                    "Eletromagnetismo",
+                    "LI3",
+                    "CP"
+               ],
+               "ano": 2,
+               "desc_dependencia": false
+          },
+          {
+               "_id": "MIEI-Quinto Ano | MEI-Segundo Ano",
+               "curso": "MIEI",
+               "gruposFilhos": [],
+               "desc_dependencia": false
+          },
+          {
+               "_id": "MIEI-Terceiro Ano",
+               "curso": "MIEI",
+               "gruposFilhos": [
+                    "BD",
+                    "DSS",
+                    "MDIO",
+                    "RC",
+                    "SD",
+                    "MNOL",
+                    "LI4",
+                    "SRC",
+                    "MEIO",
+                    "CG",
+                    "CC",
+                    "PL"
+               ],
+               "ano": 3,
+               "desc_dependencia": false
+          },
+          {
+               "_id": "MIEI",
+               "gruposFilhos": [
+                    "MIEI-Primeiro Ano",
+                    "MIEI-Segundo Ano",
+                    "MIEI-Terceiro Ano",
+                    "MIEI-Quarto Ano | MEI-Primeiro Ano",
+                    "MIEI-Quinto Ano | MEI-Segundo Ano"
+               ],
+               "curso": "MIEI",
+               "desc_dependencia": false
+          },
+          {
+               "_id": "UM",
+               "curso": "UM",
+               "gruposFilhos": [],
+               "desc_dependencia": false
+          },
+          {
+               "_id": "OLA",
+               "gruposFilhos": [
+                    "edr",
+                    "fsdfdsfds"
+               ],
+               "curso": "ere",
+               "desc_dependencia": true,
+               "__v": 0
+          },
+          {
+               "_id": "fsdfds",
+               "gruposFilhos": [
+                    "fewr",
+                    "trete"
+               ],
+               "curso": "fdsfsdf",
+               "desc_dependencia": false,
+               "__v": 0
+          },
+          {
+               "_id": "ola",
+               "gruposFilhos": [],
+               "desc_dependencia": false,
+               "__v": 0
+          }
+     ],
+     "conversas": [
+          {
+               "_id": "5e2f3cd3824a331541b86fc8",
+               "participantes": [
+                    "admin",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f3cd4824a331541b86fc9",
+               "participantes": [
+                    "teste33",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f3cd4824a331541b86fca",
+               "participantes": [
+                    "teste0",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f3cd5824a331541b86fcb",
+               "participantes": [
+                    "teste1",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f3cd6824a331541b86fcc",
+               "participantes": [
+                    "teste3",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f3cd7824a331541b86fcd",
+               "participantes": [
+                    "teste7",
+                    "filipe-cunha1@hotmail.com"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f64b316a8093ea5d31f43",
+               "participantes": [
+                    "teste2",
+                    "teste0"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f64b416a8093ea5d31f44",
+               "participantes": [
+                    "teste3",
+                    "teste0"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f64b416a8093ea5d31f45",
+               "participantes": [
+                    "teste7",
+                    "teste0"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f6516a2f4313c91ad213b",
+               "participantes": [
+                    "teste7",
+                    "admin"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f6517a2f4313c91ad213c",
+               "participantes": [
+                    "teste3",
+                    "admin"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f6517a2f4313c91ad213d",
+               "participantes": [
+                    "teste2",
+                    "admin"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f6518a2f4313c91ad213e",
+               "participantes": [
+                    "teste1",
+                    "admin"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e2f6519a2f4313c91ad213f",
+               "participantes": [
+                    "teste33",
+                    "admin"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3026d06cb8384dc9113df5",
+               "participantes": [
+                    "admin",
+                    "teste22"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e30650d54c9221119996b36",
+               "participantes": [
+                    "admin",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3065af54c9221119996b37",
+               "participantes": [
+                    "teste22",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3065b154c9221119996b38",
+               "participantes": [
+                    "teste33",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3065b254c9221119996b39",
+               "participantes": [
+                    "teste2",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3065b254c9221119996b3a",
+               "participantes": [
+                    "teste3",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3065b354c9221119996b3b",
+               "participantes": [
+                    "teste7",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e3065b354c9221119996b3c",
+               "participantes": [
+                    "filipe-cunha1@hotmail.com",
+                    "teste43"
+               ],
+               "__v": 0
+          },
+          {
+               "_id": "5e30a172784bf727cd96eeb9",
+               "participantes": [
+                    "teste33",
+                    "teste0"
+               ],
+               "__v": 0
+          }
+     ],
+     "users": [
+          {
+               "_id": "filipe-cunha1@hotmail.com",
+               "grupos": [],
+               "nome": "Filipe Cunha",
+               "nAcess": 1,
+               "__v": 0,
+               "curso": "MIEI",
+               "dataNasc": "2020-01-10",
+               "numAluno": "423432",
+               "numTelemovel": 323232,
+               "sexo": "Masculino"
+          },
+          {
+               "_id": "teste7",
+               "grupos": [],
+               "pass": "$2a$10$7YZsP1xOaTt1hYwBRm7hsOMTs1PqQNCNihnXgmu58pj4t3An/NB76",
+               "dataNasc": "2020-01-09",
+               "numAluno": "432324",
+               "nome": "4324324",
+               "sexo": "6546",
+               "numTelemovel": 64564,
+               "curso": "MIEI",
+               "nAcess": -1,
+               "token": "350cf15cd044b7cf914385b358dd8735",
+               "__v": 0
+          },
+          {
+               "_id": "teste3",
+               "grupos": [],
+               "pass": "$2a$10$Qb.caXQSU/Kw9UWSwJQgFuuV4CNs5pGZ4e0ficDTMXrlyZtva.aze",
+               "dataNasc": "2020-01-09",
+               "numAluno": "43242343",
+               "nome": "43242342",
+               "sexo": "4324324234",
+               "numTelemovel": 4324324,
+               "curso": "MIEI",
+               "nAcess": -1,
+               "token": "0fe438a19cbe7af14e85548390d1aabf",
+               "__v": 0
+          },
+          {
+               "_id": "teste2",
+               "grupos": [],
+               "pass": "$2a$10$//sAsnuvbZ0Iip9nGbgG0.KbRMDodt150eP14pNyfBmg5BfgNs1/K",
+               "dataNasc": "2020-01-22",
+               "numAluno": "43243243",
+               "nome": "rwerw",
+               "sexo": "rewrwerw",
+               "numTelemovel": 42342,
+               "curso": "MIEI",
+               "nAcess": -1,
+               "token": "92a6d8dc70690128ebe0ebef91f21fd8",
+               "__v": 0
+          },
+          {
+               "_id": "teste1",
+               "grupos": [],
+               "pass": "$2a$10$KJ7SXRc5uV2qmY0e6zQRTeQi2OR877wdQ3wapkBB1zvK0GJvmivAq",
+               "dataNasc": "2020-01-16",
+               "numAluno": "423432",
+               "nome": "4324",
+               "sexo": "423423",
+               "numTelemovel": 423432,
+               "curso": "MIEI",
+               "nAcess": 0,
+               "token": "f5f4b502f1764b71a24d614c15a5adde",
+               "__v": 0
+          },
+          {
+               "_id": "teste0",
+               "grupos": [
+                    "MIEI-Quinto Ano | MEI-Segundo Ano",
+                    "ola"
+               ],
+               "pass": "$2a$10$25JtJNd.NxzkVgXXbL4.w.25GJW74AryeyR7A.GNHemDdkePwp6aW",
+               "dataNasc": "2020-01-02",
+               "numAluno": "324324",
+               "nome": "4324324",
+               "sexo": "432432",
+               "numTelemovel": 4324324,
+               "curso": "MIEI",
+               "nAcess": 0,
+               "token": "ed0d0c7389193f1e95af0820a492fae5",
+               "__v": 0
+          },
+          {
+               "_id": "teste33",
+               "grupos": [],
+               "pass": "$2a$10$cwHZQhTpXr.he8gfTx61teKZQaF3UJvWxq7zA39VtlDWvSf96uEcK",
+               "dataNasc": "2020-01-16",
+               "numAluno": "fdsf",
+               "nome": "fsdf",
+               "sexo": "fdsfds",
+               "numTelemovel": 423423,
+               "curso": "fsdf",
+               "nAcess": -1,
+               "token": "6b8c015e96b787eb274e676656de0fe2",
+               "__v": 0
+          },
+          {
+               "_id": "admin",
+               "grupos": [],
+               "pass": "$2a$10$k50zkom.kHv70W.gSYtR3OWJjugkrmbahmD2W/KWOy5CXmFv8hXAK",
+               "dataNasc": "2020-01-24",
+               "numAluno": "432423",
+               "nome": "Admin",
+               "sexo": "Masculino",
+               "numTelemovel": 4324234,
+               "curso": "MIEI",
+               "nAcess": 10,
+               "token": "c34e0f61d0caf0188692e8d9aaefca90",
+               "__v": 0
+          },
+          {
+               "_id": "teste22",
+               "grupos": [
+                    "PL7"
+               ],
+               "pass": "$2a$10$Y0.qVaRJ0cccG8IjIL3ASeSx85DE422QxzaVemZrbvCXbzwfRQGTq",
+               "dataNasc": "2020-01-09",
+               "numAluno": "43243",
+               "nome": "Teste22",
+               "sexo": "dsaf",
+               "numTelemovel": 4324,
+               "curso": "MIEI",
+               "nAcess": 0,
+               "token": "f8a92e3343208a49319f6515e45769b7",
+               "__v": 0
+          },
+          {
+               "_id": "teste43",
+               "grupos": [],
+               "pass": "$2a$10$pKXiWoJdCZ.F7zgtqQXR8eBKDAEYFe91gxyVvVGahj6XwIT3NeCKa",
+               "dataNasc": "2020-01-14",
+               "numAluno": "423432",
+               "nome": "Teste43",
+               "sexo": "Masculino",
+               "numTelemovel": 4234324,
+               "curso": "MIEIA",
+               "nAcess": 0,
+               "token": "2f2475e7f19e1b69c0dd850f21d70a48",
+               "__v": 0
+          },
+          {
+               "_id": "teste45",
+               "grupos": [
+                    "MIEIA"
+               ],
+               "pass": "$2a$10$QR30f904zaM4xAdUC9.2Oug0PqJ/AbWjYZte2GBTNOMJWac5sr1FW",
+               "dataNasc": "2020-01-08",
+               "numAluno": "432432",
+               "nome": "Filipedsa",
+               "sexo": "Masculino",
+               "numTelemovel": 4324324,
+               "curso": "MIEIA",
+               "nAcess": -1,
+               "token": "026d8f21c0e0987cd8929c50066b856c",
+               "__v": 0
+          }
+     ]
+}

@@ -9,6 +9,7 @@ var multer = require('multer')
 var upload = multer({dest: 'uploads/'})
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
+var passport = require('passport')
 
 var dbName = 'UMbook'
 
@@ -22,7 +23,20 @@ var validCollections = [
 ]
 
 
-router.get('/export', function(req, res){
+function checkPermissao(acess){
+  return function(req, res, next) {
+  if(acess == 0 || req.user.nAcess>=acess){
+    console.log("Tem permissão")
+    next()
+  }
+  else{
+  console.log("Não tem permissão")
+  res.status(401).jsonp("Não tem permissão")
+  }
+  }
+}
+
+router.get('/export', passport.authenticate('jwt', {session: false}),checkPermissao(3),function(req, res){
     getFile()
       .then( schema => {
 
@@ -82,7 +96,7 @@ function exportaDados(collections){
 
 
 
-router.post('/import', upload.single('json'), function(req, res){
+router.post('/import', passport.authenticate('jwt', {session: false}),checkPermissao(3),upload.single('json'), function(req, res){
   let path = __dirname + '/../'+req.file.path
   parseFile(req.file)
     .then( () => {
@@ -150,7 +164,7 @@ function createCollections(json, collectionsNames){
 }
 
 
-router.delete('/drop', function(req, res){
+router.delete('/drop', passport.authenticate('jwt', {session: false}),checkPermissao(3),function(req, res){
     MongoClient.connect(url, {useUnifiedTopology: true})
               .then(db => {
                   var dbo = db.db('UMbook')

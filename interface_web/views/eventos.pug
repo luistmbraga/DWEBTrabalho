@@ -7,8 +7,9 @@ block content
                     b Eventos Disponíveis
             if grupos.length > 0
                 center
-                    table 
-                        each g in grupos
+                    .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                        table.table-all
+                            each g in grupos
                                     tr
                                         td
                                             font(size="4") 
@@ -17,7 +18,7 @@ block content
                                         td(style ="padding-left:50px;padding-bottom:10px")
                                             button.button01(onclick="location.href='/pedirAcesso/"+g._id+"'") Pedir Acesso
                                             
-                                
+                    hr          
         .w3-container(style="flex-grow: 1;")    
             include chat
                         

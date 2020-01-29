@@ -4,13 +4,19 @@ block content
         .w3-container(style='width:100%;')
             center
                 h4
-                    b Grupos de #{user.nome}
-            if user.grupos.length > 0
-                each g in user.grupos
-                    ul
-                        li
-                            a(href='/grupos/'+g)= g
-                            p
+                    b Eventos de #{userU.nome}
+                if userU.grupos.length > 0
+                    center
+                        .w3-container(style = 'width:38%; border-width:2px; background-color:white; border-style:double; border-color:#990000; text-align:left;')
+                            table 
+                                each e in userU.grupos
+                                        tr
+                                            td
+                                                font(size="4") 
+                                                    label=e
+                                            td(style ="padding-left:50px;padding-bottom:10px")
+                                                button.button01(onclick="location.href='/grupos/"+e+"'") Consultar
+                        hr
         .w3-container(style="flex-grow: 1;")    
             include chat
                         

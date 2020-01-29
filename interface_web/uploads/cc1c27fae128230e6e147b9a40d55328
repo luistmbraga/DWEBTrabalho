@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PROJECT SYSTEM "PR.dtd">
+<PROJECT>
+    <INFO>
+        <KEYNAME></KEYNAME>
+        <TITLE></TITLE>
+        <SUBTITLE></SUBTITLE>
+        <BEGINDATE></BEGINDATE>
+        <ENDATE></ENDATE>
+        <SUPERVISOR></SUPERVISOR>
+    </INFO>
+    <WORKTEAM>
+        <MEMBER></MEMBER>
+    </WORKTEAM>
+    <ABSTRACT></ABSTRACT>
+    <DELIVERABLES>
+        <DELIVERABLE REF=""></DELIVERABLE>
+    </DELIVERABLES>
+    <FOOTER></FOOTER>
+</PROJECT>

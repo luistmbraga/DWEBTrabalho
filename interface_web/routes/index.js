@@ -206,6 +206,7 @@ router.get('/grupos/:grupo', verificaAutenticacao,function(req, res, next){
                   .then( (users) => {
                       getFicheiros(dados.data,req)
                             .then(publicacoes => {
+                              console.log(JSON.stringify(publicacoes))
                               res.render('curso', {grupo: grupo.data, grupos : grupo.data.gruposFilhos, users:users.data, publicacoes:publicacoes, user:getUserID(req),nAcess:getUserAcess(req)})
                             })
                             .catch(erro => res.status(500).render('error', {error : erro}) )
@@ -248,7 +249,7 @@ router.get('/meuPerfil',verificaAutenticacao, function(req, res, next){
               .then( (user) => {
                 console.log(user.nome)
                             //res.render('feed', {lista : dados, users:users.data})
-            res.render('meuPerfil', {lista: dados, users: users.data, user:user.data,nAcess:getUserAcess(req)})
+            res.render('meuPerfil', {lista: dados, users: users.data,user:getUserID(req), userU:user.data,nAcess:getUserAcess(req)})
               })
               .catch(erro => res.status(500).render('error', {error : erro}))
 
@@ -286,7 +287,8 @@ router.get('/meusgrupos/', verificaAutenticacao,function(req, res, nex){
     .then(dados => {
       axios.get(apiUsers+"?token="+getUserAcessToken(req))
         .then( (users) => {
-        res.render('meusgrupos', {users: users.data,user: dados.data,nAcess:getUserAcess(req)})
+          dados.data.grupos.shift()
+        res.render('meusgrupos', {users: users.data,user:getUserID(req) ,userU: dados.data,nAcess:getUserAcess(req)})
     })
     .catch(erro => res.status(500).render('error', {error : erro}) )
   })
@@ -311,6 +313,16 @@ router.get('/eventos/', verificaAutenticacao,function(req, res, nex){
   })
     .catch(erro => res.status(500).render('error', {error : erro}) )
 })
+
+
+router.get('/databases/', verificaAutenticacao,function(req, res, nex){
+      axios.get(apiUsers+"?token="+getUserAcessToken(req))
+        .then( (users) => {
+            res.render('databases', {users: users.data, user: getUserID(req),nAcess:getUserAcess(req)})
+          })
+          .catch(erro => res.status(500).render('error', {error : erro}) )
+})
+
 
 router.get('/addGrupo/', verificaAutenticacao,function(req, res, nex){
       axios.get(apiUsers+"?token="+getUserAcessToken(req))
@@ -339,7 +351,7 @@ router.get('/grupos/', verificaAutenticacao,function(req, res, nex){
 
 router.post('/atualizaUtilizador', verificaAutenticacao,function(req, res, next){
   
-  var iduser = req.body._id ///// MUDAR ISTO
+  var iduser = req.body._id 
   var newUser = req.body
   if(newUser.pass == ""){
     delete newUser.pass
@@ -365,7 +377,7 @@ router.post('/login', passport.authenticate('local',
         console.log(user.data)
         if(req.query.grupo){
             axios.put(apiUsers+req.query.user+"/"+req.query.grupo+"?token="+getUserAcessToken(req))
-            .then((dados) => {res.jsonp({Sucesso:"User adicionado ao Grupo!!"})})//////// FALTA ARRANJAR ISTO
+            .then((dados) => {res.render("addSucesso")})
             .catch(erro => res.status(500).render('error', {error : erro}))
         }
         else if(user.data.nAcess == -1)
@@ -479,8 +491,11 @@ function form_data_files(files, idContainer, emailUser){
   return new Promise(function(resolve, reject){
     let form_data = new FormData();
     var length = files.length - 1
+    console.log("WTFFFF")
+    console.log(files)
     for(var i = 0; i <= length; ){
       sizeFiles = files[i].size
+      console.log(files[i])
       form_data.append('ficheiro', fs.createReadStream(files[i].path), files[i].originalname)
       if(i++ == length) {
         
@@ -496,10 +511,12 @@ function form_data_files(files, idContainer, emailUser){
 router.post('/utilizadorFacebook', verificaAutenticacao,function(req, res, next){
   var newUser = req.body
   newUser.grupos = []
+  newUser.grupos.push(newUser.curso)
   console.log(newUser)
   console.log(req.session)
   console.log(req.session.passport.user)
-  axios.put(apiUsers+req.session.passport.user+"?token="+getToken(3), newUser)
+  newUser.nAcess = 0;
+  axios.put(apiUsers+getUserID(req)+"?token="+getToken(4), newUser)
        .then( () => res.redirect('/feedNoticias') )
        .catch(erro => res.status(500).render('error', {error : erro}) )
 })
@@ -525,8 +542,7 @@ function limpaUpload(files){
 function post_ficheiro(files, idContainer, emailUser,req){
   return new Promise(function(resolve, reject){
     var ficheiros = files
-
-    form_data_files(ficheiros+"?token="+getUserAcessToken(req), idContainer, emailUser)
+    form_data_files(ficheiros, idContainer, emailUser)
           .then(form_data => {
             const request_config = {
               headers: {
@@ -534,7 +550,7 @@ function post_ficheiro(files, idContainer, emailUser,req){
               }
             };
             
-            axios.post(apiFicheiros, form_data, request_config)  
+            axios.post(apiFicheiros+"?token="+getUserAcessToken(req), form_data, request_config)  
                   .then(dados => {
                     limpaUpload(ficheiros)
                     resolve(dados)})
@@ -657,10 +673,10 @@ function form_data_file(file){
   })
 }
 
-router.delete('/drop', function(req, res, next){
-  axios.delete("http://localhost:3056/api/dbManager/drop")
+router.get('/drop', verificaAutenticacao, function(req, res, next){
+  axios.delete("http://localhost:3056/api/dbManager/drop?token="+getUserAcessToken(req))
        .then(dados => {
-         res.jsonp(dados.data)
+         res.redirect('/databases')
        })
        .catch(erro => {
          console.log(erro)
@@ -669,6 +685,8 @@ router.delete('/drop', function(req, res, next){
 
 // o input do file tem que se chamar json ou altera este nome
 router.post('/importData', upload.single('json'), function(req, res, next){  
+  axios.delete("http://localhost:3056/api/dbManager/drop?token="+getToken(10))
+       .then(dados => {
   form_data_file(req.file)
           .then(form_data => {
     
@@ -678,10 +696,10 @@ router.post('/importData', upload.single('json'), function(req, res, next){
               }
             };
 
-            axios.post("http://localhost:3056/api/dbManager/import", form_data, request_config)  
+            axios.post("http://localhost:3056/api/dbManager/import?token="+getToken(10), form_data, request_config)  
                   .then(dados => {
                     console.log(dados.data)
-                    res.jsonp(dados.data)
+                    res.redirect('/databases')
                   })
                   .catch(erro => res.jsonp(erro.response.data.message))
                   .finally(()=> {
@@ -692,14 +710,17 @@ router.post('/importData', upload.single('json'), function(req, res, next){
           
           })
           .catch(erro => console.log(erro))
+        })
+          .catch(erro => {
+            console.log(erro)})
 })
 
 
-router.get('/exportData', function(req, res, next){
+router.get('/exportData', verificaAutenticacao, function(req, res, next){
   var fileName = 'UMbook.json'
   axios({
     method: "get",
-    url: "http://localhost:3056/api/dbManager/export",
+    url: "http://localhost:3056/api/dbManager/export?token="+getUserAcessToken(req),
     responseType: "stream"
       }).then(function (response) {
         var stream = response.data.pipe(fs.createWriteStream(downloadPath + fileName))      
@@ -729,8 +750,13 @@ router.get('/auth/facebook/callback',
     axios.get(apiUsers + getUserID(req)+"?token="+getToken())
     .then(dados => {
         console.log("User: " +JSON.stringify(dados.data))
-    if(dados.data.curso == null)
-      res.render('registaFacebook');
+    if(dados.data.curso == null){
+      axios.get(apiGrupos+"tiposCursos?token="+getToken())
+      .then(dados =>{
+        res.render('registaFacebook',{grupos:dados.data});
+      })
+      .catch(erro => res.status(500).render('error', {error : erro}) )
+    }
     else
       res.redirect('/feedNoticias');
     })

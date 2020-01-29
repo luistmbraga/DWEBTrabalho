@@ -18,50 +18,50 @@ block content
                                             font(size="4") 
                                                 label 
                                                     b Nome: 
-                                                =user.nome
+                                                =userU.nome
                                     tr
                                         td 
                                             font(size="4") 
                                                 label 
                                                     b Curso: 
-                                                =user.curso
+                                                =userU.curso
                                     tr
                                         td 
                                             font(size="4") 
                                                 label 
                                                     b Sexo: 
-                                                =user.sexo
+                                                =userU.sexo
                                     tr
                                         td 
                                             font(size="4") 
                                                 label 
                                                     b Data Nascimento: 
-                                                =user.dataNasc
+                                                =userU.dataNasc
 
                                     tr
                                         td 
                                             font(size="4") 
                                                 label 
                                                     b Nº Aluno: 
-                                                =user.numAluno
+                                                =userU.numAluno
                                     tr
                                         td 
                                             font(size="4") 
                                                 label 
                                                     b Telemóvel: 
-                                                =user.numTelemovel
-                                    if(user.grupos.length > 0)
+                                                =userU.numTelemovel
+                                    if(userU.grupos.length > 0)
                                         tr
                                             td 
                                                 font(size="4") 
                                                     label 
                                                         b Grupos: 
                                                 ul
-                                                    each g in user.grupos
+                                                    each g in userU.grupos
                                                         li=g
                                     
                         td
-                            button.button01(onclick="updateUser('"+user._id+"')" style="margin-top:300px; float:right; width:150px; height:50px;") 
+                            button.button01(onclick="updateUser('"+userU._id+"')" style="margin-top:300px; float:right; width:150px; height:50px;") 
                                 center
                                     b Alterar Dados
                         

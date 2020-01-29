@@ -9,7 +9,7 @@ block content
               input.w3-input.w3-border(type='password' name='password' placeholder='Password' required)
               center
                 a(onclick="showRegisto()") Ainda não possuí conta?
-              button(type="submit" style="background-color: #e6e6e6; color: #990000; width:100%; padding:12px; font-size:16px; border-radius: 12px;").w3-hover-green Login
+              button.button01(type="submit") Login
               p
               h3 Login Alternativo
                 div(style="padding-right: 10px" id="fb-root")
@@ -27,6 +27,5 @@ block content
             script.
                 var grupos = !{JSON.stringify(grupos)}
                 $(document).ready(function() {
-                  console.log("WTF")
                 $('.js-example-basic-single').select2();
                  });

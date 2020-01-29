@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding ="UTF-8"?>
+<!ELEMENT livro-de-receitas (abertura,receitas)>
+<!ELEMENT abertura (autor,data,local)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT data (#PCDATA)>
+<!ELEMENT local (#PCDATA)>
+
+<!ELEMENT receitas (#PCDATA)>
+<!ELEMENT receita (titulo,ingredientes,preparaçáo)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT ingredientes (ingrediente+)>
+<!ELEMENT ingrediente (#PCDATA)>
+<!ELEMENT preparação (instrução+)>
+<!ELEMENT isntrução (#PCDATA)>
+
+http://www4.di.uminho.pt/~jcr/XML/didac/xmldocs/PR.htm
